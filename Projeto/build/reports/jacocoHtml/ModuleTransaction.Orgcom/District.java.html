@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="pt"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>District.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Projeto</a> &gt; <a href="index.source.html" class="el_package">ModuleTransaction.Orgcom</a> &gt; <span class="el_source">District.java</span></div><h1>District.java</h1><pre class="source lang-java linenums">package ModuleTransaction.Orgcom;
+
+/**
+ * The District enum provides the options for the entity districts..
+ */
+<span class="fc" id="L6">public enum District {</span>
+<span class="fc" id="L7">    VIANA_CASTELO(&quot;Viana do Castelo&quot;),</span>
+<span class="fc" id="L8">    BRAGA(&quot;Braga&quot;),</span>
+<span class="fc" id="L9">    VILA_REAL(&quot;Vila Real&quot;),</span>
+<span class="fc" id="L10">    BRAGANCA(&quot;BraganÃ§a&quot;),</span>
+<span class="fc" id="L11">    PORTO(&quot;Porto&quot;),</span>
+<span class="fc" id="L12">    VISEU(&quot;Viseu&quot;),</span>
+<span class="fc" id="L13">    AVEIRO(&quot;Aveiro&quot;),</span>
+<span class="fc" id="L14">    GUARDA(&quot;Guarda&quot;),</span>
+<span class="fc" id="L15">    COIMBRA(&quot;Coimbra&quot;),</span>
+<span class="fc" id="L16">    CASTELO_BRANCO(&quot;Castelo Branco&quot;),</span>
+<span class="fc" id="L17">    LEIRIA(&quot;Leiria&quot;),</span>
+<span class="fc" id="L18">    LISBOA(&quot;Lisboa&quot;),</span>
+<span class="fc" id="L19">    SANTAREM(&quot;SantarÃ©m&quot;),</span>
+<span class="fc" id="L20">    PORTALEGRE(&quot;Portalegre&quot;),</span>
+<span class="fc" id="L21">    SETUBAL(&quot;SetÃºbal&quot;),</span>
+<span class="fc" id="L22">    EVORA(&quot;Ã‰vora&quot;),</span>
+<span class="fc" id="L23">    BEJA(&quot;Beja&quot;),</span>
+<span class="fc" id="L24">    FARO(&quot;Faro&quot;);</span>
+
+    private final String label;
+
+<span class="fc" id="L28">    private District(String label) {</span>
+<span class="fc" id="L29">        this.label = label;</span>
+<span class="fc" id="L30">    }</span>
+
+    /**
+     * Returns a string representation of the district.
+     *
+     * @return the label for the district.
+     */
+    @Override
+    public String toString() {
+<span class="fc" id="L39">        return this.label;</span>
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.6.202009150832</span></div></body></html>

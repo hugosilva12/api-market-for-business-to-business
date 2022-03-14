@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="pt"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>ImportDistanceTableKM.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Projeto</a> &gt; <a href="index.source.html" class="el_package">JsonOperations</a> &gt; <span class="el_source">ImportDistanceTableKM.java</span></div><h1>ImportDistanceTableKM.java</h1><pre class="source lang-java linenums">package JsonOperations;
+
+import ModuleCost.*;
+import org.json.simple.JSONArray;
+import org.json.simple.JSONObject;
+import org.json.simple.parser.JSONParser;
+import org.json.simple.parser.ParseException;
+
+import java.io.File;
+import java.io.FileReader;
+import java.io.IOException;
+
+/**
+ * Class that imports a json file with the distances between districts
+ */
+public class ImportDistanceTableKM {
+
+<span class="fc" id="L18">    private IDistanceTable basicIDistanceTable = new DistanceTable();</span>
+
+<span class="fc" id="L20">    public ImportDistanceTableKM() {</span>
+
+<span class="fc" id="L22">    }</span>
+
+    /**
+     * Returns a ArrayList of districtsCosts imported by a JSON file.
+     *
+     * @param path   the path of the JSON file to import the costsTable' data.
+     * @throws IllegalArgumentException If the argument path is null or empty.
+     *
+     * @return  a ArrayList of districtsCosts imported by a JSON file.
+     */
+    public IDistanceTable importCostsTableKM(String path) {
+<span class="fc bfc" id="L33" title="All 4 branches covered.">        if (path == null || path.isEmpty()) {</span>
+<span class="fc" id="L34">            throw new IllegalArgumentException(&quot;Path should not be null or empty&quot;);</span>
+        }
+
+<span class="fc" id="L37">        this.basicIDistanceTable = new DistanceTable();</span>
+
+<span class="fc" id="L39">        File file = new File(path);</span>
+
+<span class="fc" id="L41">        JSONParser jsonParser = new JSONParser();</span>
+<span class="fc" id="L42">        boolean exists = file.exists();</span>
+
+<span class="fc bfc" id="L44" title="All 2 branches covered.">        if (exists) {</span>
+
+<span class="fc" id="L46">            JSONObject obj = null;</span>
+            try {
+<span class="fc" id="L48">                obj = (JSONObject) jsonParser.parse(new FileReader(file.getPath()));</span>
+<span class="nc" id="L49">            } catch (IOException e) {</span>
+<span class="nc" id="L50">                e.printStackTrace();</span>
+<span class="nc" id="L51">            } catch (ParseException e) {</span>
+<span class="nc" id="L52">                e.printStackTrace();</span>
+<span class="pc" id="L53">            }</span>
+
+<span class="fc" id="L55">            JSONArray listDistrictsDistances = (JSONArray) obj.get(&quot;districts&quot;);</span>
+<span class="fc bfc" id="L56" title="All 2 branches covered.">            for (int i = 0; i &lt; listDistrictsDistances.size(); i++) {</span>
+<span class="fc" id="L57">                JSONObject objDistrictsDistances = (JSONObject) listDistrictsDistances.get(i);</span>
+
+<span class="fc" id="L59">                IDistrictDistance listIDistrictDistance = new DistrictDistance((String) objDistrictsDistances.get(&quot;name&quot;));</span>
+
+<span class="fc" id="L61">                JSONArray listDistances = (JSONArray) objDistrictsDistances.get(&quot;distances&quot;);</span>
+<span class="fc bfc" id="L62" title="All 2 branches covered.">                for (int j = 0; j &lt; listDistances.size(); j++) {</span>
+<span class="fc" id="L63">                    JSONObject objDistance = (JSONObject) listDistances.get(j);</span>
+
+<span class="fc" id="L65">                    int distance = Integer.parseInt(objDistance.get(&quot;distance&quot;).toString());</span>
+
+<span class="fc" id="L67">                    IDistanceLine basicDistance = new DistanceLine((String) objDistance.get(&quot;id&quot;), distance);</span>
+
+<span class="fc" id="L69">                    listIDistrictDistance.addDistance(basicDistance);</span>
+                }
+<span class="fc" id="L71">                basicIDistanceTable.addDistrictDistance(listIDistrictDistance);</span>
+            }
+
+<span class="fc" id="L74">            return this.basicIDistanceTable;</span>
+
+        } else {
+<span class="fc" id="L77">            return null;</span>
+        }
+
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.6.202009150832</span></div></body></html>

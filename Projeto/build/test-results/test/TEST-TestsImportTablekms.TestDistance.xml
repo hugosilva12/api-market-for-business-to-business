@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="TestsImportTablekms.TestDistance" tests="3" skipped="0" failures="0" errors="0" timestamp="2022-01-20T22:56:39" hostname="DESKTOP-HSBC8M0" time="0.01">
+  <properties/>
+  <testcase name="testDistanceLineBVA01()" classname="TestsImportTablekms.TestDistance" time="0.002"/>
+  <testcase name="testDistanceLineBVA02()" classname="TestsImportTablekms.TestDistance" time="0.004"/>
+  <testcase name="testDistanceLineECP01()" classname="TestsImportTablekms.TestDistance" time="0.001"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

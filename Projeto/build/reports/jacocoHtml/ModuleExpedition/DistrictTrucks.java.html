@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="pt"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>DistrictTrucks.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Projeto</a> &gt; <a href="index.source.html" class="el_package">ModuleExpedition</a> &gt; <span class="el_source">DistrictTrucks.java</span></div><h1>DistrictTrucks.java</h1><pre class="source lang-java linenums">package ModuleExpedition;
+
+import APIUSE.IOrder;
+import APIUSE.Order;
+
+
+import java.util.ArrayList;
+
+/**
+ * The DistrictExpedition class provides the functionality of a district expedition in the API.
+ */
+public class DistrictTrucks implements IDistrictTrucks {
+    private String nameDistrict;
+<span class="fc" id="L14">    private ArrayList&lt;Truck&gt; listTrucks = new ArrayList&lt;Truck&gt;();</span>
+    private ArrayList&lt;IOrder&gt; ordersByDistrict;
+
+    /**
+     * {@inheritDoc}
+     */
+<span class="fc" id="L20">    public DistrictTrucks(String nameDistrict, int numberContainer, ArrayList&lt;IOrder&gt; ordersByDistrict) {</span>
+<span class="fc bfc" id="L21" title="All 2 branches covered.">        if (nameDistrict == null) {</span>
+<span class="fc" id="L22">            throw new IllegalArgumentException(&quot;Name District cannot be Empty.&quot;);</span>
+        }
+<span class="fc bfc" id="L24" title="All 2 branches covered.">        if (nameDistrict.isEmpty()) {</span>
+<span class="fc" id="L25">            throw new IllegalArgumentException(&quot;Name District cannot be Empty.&quot;);</span>
+        }
+<span class="fc bfc" id="L27" title="All 2 branches covered.">        if (ordersByDistrict == null) {</span>
+<span class="fc" id="L28">            throw new IllegalArgumentException(&quot;ordersByDistrict cannot be null.&quot;);</span>
+        }
+<span class="fc" id="L30">        this.nameDistrict = nameDistrict;</span>
+<span class="fc" id="L31">        this.createTruck(numberContainer);</span>
+<span class="fc" id="L32">        this.ordersByDistrict = ordersByDistrict;</span>
+<span class="fc" id="L33">    }</span>
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    public String toString() {
+<span class="nc" id="L40">        System.out.println(&quot;--------------------------------------------------------------------------------------&quot;);</span>
+<span class="nc" id="L41">        System.out.println(&quot;nameDistrict:&quot; + nameDistrict);</span>
+<span class="nc" id="L42">        System.out.println(&quot;Escalonamento Truck:&quot;);</span>
+<span class="nc bnc" id="L43" title="All 2 branches missed.">        for (int i = 0; i &lt; this.listTrucks.size(); i++) {</span>
+<span class="nc" id="L44">            System.out.println(listTrucks.get(i).toString());</span>
+        }
+<span class="nc" id="L46">        return &quot;&quot;;</span>
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    public void createTruck(int numberTruck) {
+<span class="fc bfc" id="L54" title="All 2 branches covered.">        if (numberTruck &lt; 1) {</span>
+<span class="fc" id="L55">            throw new IllegalArgumentException(&quot;number contanier cannot be negative or 0.&quot;);</span>
+        }
+<span class="fc bfc" id="L57" title="All 2 branches covered.">        for (int i = 0; i &lt; numberTruck; i++) {</span>
+<span class="fc" id="L58">            Truck container = new Truck(&quot;Truck&quot; + String.valueOf(i + 1));</span>
+<span class="fc" id="L59">            listTrucks.add(container);</span>
+        }
+<span class="fc" id="L61">    }</span>
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    public void groupOrders() {
+<span class="fc" id="L68">        int containerIndex = 0;</span>
+
+<span class="fc bfc" id="L70" title="All 2 branches covered.">        for (IOrder order : ordersByDistrict) {</span>
+
+<span class="fc bfc" id="L72" title="All 2 branches covered.">            if (order.getOrderVolum() &lt;= listTrucks.get(containerIndex).availableCapacity()) {</span>
+<span class="fc" id="L73">                listTrucks.get(containerIndex).addAllOrderInTruck(order);</span>
+            } else {
+
+<span class="fc" id="L76">                containerIndex++;</span>
+<span class="fc bfc" id="L77" title="All 2 branches covered.">                if (containerIndex == listTrucks.size()) {</span>
+<span class="fc" id="L78">                    containerIndex--;</span>
+                }
+<span class="fc bfc" id="L80" title="All 2 branches covered.">                for (int j = 0; j &lt; order.getProductCounter(); j++) {</span>
+<span class="fc bfc" id="L81" title="All 2 branches covered.">                    for (int k = 0; k &lt; order.getProductByIndex(j).getQuantity(); k++) {</span>
+<span class="fc" id="L82">                        Boolean isInsert = listTrucks.get(containerIndex).addProductInTruck(order.getId(), String.valueOf(order.getProductByIndex(j).getId()), order.getProductByIndex(j).getVolume());</span>
+
+                        //NAO INSERIDO
+<span class="fc bfc" id="L85" title="All 2 branches covered.">                        if (!isInsert) {</span>
+
+<span class="fc" id="L87">                            boolean allocationPossible = false;</span>
+<span class="fc bfc" id="L88" title="All 2 branches covered.">                            for (int i = 0; i &lt; listTrucks.size(); i++) {</span>
+<span class="fc bfc" id="L89" title="All 2 branches covered.">                                if (listTrucks.get(i).availableCapacity() &gt;= order.getProductByIndex(j).getVolume()) {</span>
+
+<span class="fc" id="L91">                                    allocationPossible = true;</span>
+<span class="fc" id="L92">                                    listTrucks.get(i).addProductInTruck(order.getId(), String.valueOf(order.getProductByIndex(j).getId()), order.getProductByIndex(j).getVolume());</span>
+<span class="fc" id="L93">                                    break;</span>
+                                }
+                            }
+
+<span class="fc bfc" id="L97" title="All 2 branches covered.">                            if (!allocationPossible) { //Peciso novo camiao</span>
+
+<span class="fc" id="L99">                                Truck container = new Truck(&quot;Truck&quot; + String.valueOf(listTrucks.size() - 1));</span>
+<span class="fc" id="L100">                                listTrucks.add(container);</span>
+
+<span class="fc" id="L102">                                isInsert = listTrucks.get(listTrucks.size() - 1).addProductInTruck(order.getId(), String.valueOf(order.getProductByIndex(j).getId()), order.getProductByIndex(j).getVolume());</span>
+                            }
+                        }
+                    }
+                }
+            }
+
+<span class="fc" id="L109">        }</span>
+<span class="fc" id="L110">    }</span>
+
+    /**
+     * {@inheritDoc}
+     */
+    public String getNameDistrict() {
+<span class="fc" id="L116">        return nameDistrict;</span>
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    public Truck getTruckByIndex(int index) {
+<span class="fc bfc" id="L124" title="All 4 branches covered.">        if (index &lt; 0 || index &gt;= listTrucks.size()) {</span>
+<span class="fc" id="L125">            throw new IndexOutOfBoundsException(&quot;Index out of bounds&quot;);</span>
+        }
+<span class="fc" id="L127">        return this.listTrucks.get(index);</span>
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    public int getSize() {
+<span class="fc" id="L135">        return this.listTrucks.size();</span>
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.6.202009150832</span></div></body></html>

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="TestBasicEntity" tests="7" skipped="0" failures="0" errors="0" timestamp="2022-01-20T22:56:39" hostname="DESKTOP-HSBC8M0" time="0.011">
+  <properties/>
+  <testcase name="testBasicEntityBVA01()" classname="TestBasicEntity" time="0.001"/>
+  <testcase name="testBasicEntityBVA02()" classname="TestBasicEntity" time="0.001"/>
+  <testcase name="testBasicEntityECP01()" classname="TestBasicEntity" time="0.001"/>
+  <testcase name="testAddTokenBVA01()" classname="TestBasicEntity" time="0.001"/>
+  <testcase name="testAddTokenBVA02()" classname="TestBasicEntity" time="0.001"/>
+  <testcase name="testAddTokenBVA03()" classname="TestBasicEntity" time="0.001"/>
+  <testcase name="testAddTokenECP01()" classname="TestBasicEntity" time="0.001"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

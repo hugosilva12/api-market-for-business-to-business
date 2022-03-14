@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="TestsModuleExpedition.TestDistrictTrucks" tests="10" skipped="0" failures="0" errors="0" timestamp="2022-01-20T22:56:39" hostname="DESKTOP-HSBC8M0" time="0.109">
+  <properties/>
+  <testcase name="testCreateTruckBVA01()" classname="TestsModuleExpedition.TestDistrictTrucks" time="0.013"/>
+  <testcase name="testCreateTruckECP01()" classname="TestsModuleExpedition.TestDistrictTrucks" time="0.01"/>
+  <testcase name="testCreateTruckECP02()" classname="TestsModuleExpedition.TestDistrictTrucks" time="0.012"/>
+  <testcase name="testDistrictTrucksBVA01()" classname="TestsModuleExpedition.TestDistrictTrucks" time="0.01"/>
+  <testcase name="testDistrictTrucksBVA02()" classname="TestsModuleExpedition.TestDistrictTrucks" time="0.009"/>
+  <testcase name="testDistrictTrucksBVA03()" classname="TestsModuleExpedition.TestDistrictTrucks" time="0.009"/>
+  <testcase name="testDistrictTrucksECP01()" classname="TestsModuleExpedition.TestDistrictTrucks" time="0.011"/>
+  <testcase name="testGetTruckByIndexBVA01()" classname="TestsModuleExpedition.TestDistrictTrucks" time="0.012"/>
+  <testcase name="testGetTruckByIndexBVA02()" classname="TestsModuleExpedition.TestDistrictTrucks" time="0.01"/>
+  <testcase name="testGetTruckByIndexECP01()" classname="TestsModuleExpedition.TestDistrictTrucks" time="0.01"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

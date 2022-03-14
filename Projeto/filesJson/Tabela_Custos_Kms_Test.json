@@ -1,0 +1,326 @@
+{
+  "districts": [
+    {
+      "id": 1,
+      "name": "Viana_do_Castelo",
+      "distances": [
+        {
+          "id": "Viana_do_Castelo",
+          "distance": 0
+        },
+        {
+          "id": "Braga",
+          "distance": 60
+        },
+        {
+          "id": "Vila_Real",
+          "distance": 160
+        },
+        {
+          "id": "Braganca",
+          "distance": 270
+        },
+        {
+          "id": "Porto",
+          "distance": 75
+        },
+        {
+          "id": "Viseu",
+          "distance": 200
+        },
+        {
+          "id": "Aveiro",
+          "distance": 150
+        },
+        {
+          "id": "Guarda",
+          "distance": 270
+        },
+        {
+          "id": "Coimbra",
+          "distance": 200
+        },
+        {
+          "id": "Castelo_Branco",
+          "distance": 331
+        },
+        {
+          "id": "Leiria",
+          "distance": 250
+        },
+        {
+          "id": "Lisboa",
+          "distance": 385
+        },
+        {
+          "id": "Santarem",
+          "distance": 320
+        },
+        {
+          "id": "Portalegre",
+          "distance": 365
+        },
+        {
+          "id": "Setubal",
+          "distance": 420
+        },
+        {
+          "id": "Evora",
+          "distance": 478
+        },
+        {
+          "id": "Beja",
+          "distance": 520
+        },
+        {
+          "id": "Faro",
+          "distance": 620
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "name": "Braga",
+      "distances": [
+        {
+          "id": "Viana_do_Castelo",
+          "distance": 60
+        },
+        {
+          "id": "Braga",
+          "distance": 0
+        },
+        {
+          "id": "Vila_Real",
+          "distance": 100
+        },
+        {
+          "id": "Braganca",
+          "distance": 217
+        },
+        {
+          "id": "Porto",
+          "distance": 55
+        },
+        {
+          "id": "Viseu",
+          "distance": 180
+        },
+        {
+          "id": "Aveiro",
+          "distance": 125
+        },
+        {
+          "id": "Guarda",
+          "distance": 250
+        },
+        {
+          "id": "Coimbra",
+          "distance": 170
+        },
+        {
+          "id": "Castelo_Branco",
+          "distance": 309
+        },
+        {
+          "id": "Leiria",
+          "distance": 234
+        },
+        {
+          "id": "Lisboa",
+          "distance": 363
+        },
+        {
+          "id": "Santarem",
+          "distance": 300
+        },
+        {
+          "id": "Portalegre",
+          "distance": 340
+        },
+        {
+          "id": "Setubal",
+          "distance": 400
+        },
+        {
+          "id": "Evora",
+          "distance": 450
+        },
+        {
+          "id": "Beja",
+          "distance": 500
+        },
+        {
+          "id": "Faro",
+          "distance": 600
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "name": "Vila_Real",
+      "distances": [
+        {
+          "id": "Viana_do_Castelo",
+          "distance": 160
+        },
+        {
+          "id": "Braga",
+          "distance": 100
+        },
+        {
+          "id": "Vila_Real",
+          "distance": 0
+        },
+        {
+          "id": "Braganca",
+          "distance": 110
+        },
+        {
+          "id": "Porto",
+          "distance": 100
+        },
+        {
+          "id": "Viseu",
+          "distance": 100
+        },
+        {
+          "id": "Aveiro",
+          "distance": 160
+        },
+        {
+          "id": "Guarda",
+          "distance": 170
+        },
+        {
+          "id": "Coimbra",
+          "distance": 180
+        },
+        {
+          "id": "Castelo_Branco",
+          "distance": 260
+        },
+        {
+          "id": "Leiria",
+          "distance": 260
+        },
+        {
+          "id": "Lisboa",
+          "distance": 400
+        },
+        {
+          "id": "Santarem",
+          "distance": 330
+        },
+        {
+          "id": "Portalegre",
+          "distance": 350
+        },
+        {
+          "id": "Setubal",
+          "distance": 430
+        },
+        {
+          "id": "Evora",
+          "distance": 490
+        },
+        {
+          "id": "Beja",
+          "distance": 535
+        },
+        {
+          "id": "Faro",
+          "distance": 630
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "name": "Braganca",
+      "distances": [
+        {
+          "id": "Viana_do_Castelo",
+          "distance": 270
+        },
+        {
+          "id": "Braga",
+          "distance": 217
+        },
+        {
+          "id": "Vila_Real",
+          "distance": 110
+        },
+        {
+          "id": "Braganca",
+          "distance": 0
+        },
+        {
+          "id": "Porto",
+          "distance": 210
+        },
+        {
+          "id": "Viseu",
+          "distance": 200
+        },
+        {
+          "id": "Aveiro",
+          "distance": 270
+        },
+        {
+          "id": "Guarda",
+          "distance": 180
+        },
+        {
+          "id": "Coimbra",
+          "distance": 290
+        },
+        {
+          "id": "Castelo_Branco",
+          "distance": 270
+        },
+        {
+          "id": "Leiria",
+          "distance": 350
+        },
+        {
+          "id": "Lisboa",
+          "distance": 480
+        },
+        {
+          "id": "Santarem",
+          "distance": 420
+        },
+        {
+          "id": "Portalegre",
+          "distance": 360
+        },
+        {
+          "id": "Setubal",
+          "distance": 520
+        },
+        {
+          "id": "Evora",
+          "distance": 460
+        },
+        {
+          "id": "Beja",
+          "distance": 540
+        },
+        {
+          "id": "Faro",
+          "distance": 720
+        }
+      ]
+    },
+    {
+      "id": 5,
+      "name": "Porto",
+      "distances": [
+        {
+          "id": "Porto",
+          "distance": 0
+        }
+      ]
+    }
+  ]
+}

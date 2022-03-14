@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="TestsTrabalho1.TestBasicOrganization" tests="24" skipped="0" failures="0" errors="0" timestamp="2022-01-20T22:56:40" hostname="DESKTOP-HSBC8M0" time="0.033">
+  <properties/>
+  <testcase name="testGetBlockBVA01()" classname="TestsTrabalho1.TestBasicOrganization" time="0.001"/>
+  <testcase name="testGetBlockBVA02()" classname="TestsTrabalho1.TestBasicOrganization" time="0.001"/>
+  <testcase name="testGetBlockBVA03()" classname="TestsTrabalho1.TestBasicOrganization" time="0.001"/>
+  <testcase name="testGetBlockECP01()" classname="TestsTrabalho1.TestBasicOrganization" time="0.0"/>
+  <testcase name="testAddTransactionBVA01()" classname="TestsTrabalho1.TestBasicOrganization" time="0.0"/>
+  <testcase name="testAddTransactionECP01()" classname="TestsTrabalho1.TestBasicOrganization" time="0.0"/>
+  <testcase name="testAddTransactionECP02()" classname="TestsTrabalho1.TestBasicOrganization" time="0.0"/>
+  <testcase name="testAddTransactionECP03()" classname="TestsTrabalho1.TestBasicOrganization" time="0.001"/>
+  <testcase name="testAddTransactionECP04()" classname="TestsTrabalho1.TestBasicOrganization" time="0.0"/>
+  <testcase name="testIsValidEdgerBVA01()" classname="TestsTrabalho1.TestBasicOrganization" time="0.001"/>
+  <testcase name="testIsValidEdgerBVA02()" classname="TestsTrabalho1.TestBasicOrganization" time="0.001"/>
+  <testcase name="testIsValidEdgerBVA03()" classname="TestsTrabalho1.TestBasicOrganization" time="0.001"/>
+  <testcase name="testIsValidEdgerECP01()" classname="TestsTrabalho1.TestBasicOrganization" time="0.003"/>
+  <testcase name="testGetBlockCountECP01()" classname="TestsTrabalho1.TestBasicOrganization" time="0.001"/>
+  <testcase name="testGetBlockCountECP02()" classname="TestsTrabalho1.TestBasicOrganization" time="0.001"/>
+  <testcase name="testRemoveTransactionBVA01()" classname="TestsTrabalho1.TestBasicOrganization" time="0.001"/>
+  <testcase name="testRemoveTransactionBVA02()" classname="TestsTrabalho1.TestBasicOrganization" time="0.001"/>
+  <testcase name="testRemoveTransactionECP01()" classname="TestsTrabalho1.TestBasicOrganization" time="0.001"/>
+  <testcase name="testRemoveTransactionECP02()" classname="TestsTrabalho1.TestBasicOrganization" time="0.001"/>
+  <testcase name="testRegisterTransactionsInLedgerECP01()" classname="TestsTrabalho1.TestBasicOrganization" time="0.001"/>
+  <testcase name="testRegisterTransactionsInLedgerECP02()" classname="TestsTrabalho1.TestBasicOrganization" time="0.0"/>
+  <testcase name="testGetTransactionBVA01()" classname="TestsTrabalho1.TestBasicOrganization" time="0.0"/>
+  <testcase name="testGetTransactionECP01()" classname="TestsTrabalho1.TestBasicOrganization" time="0.001"/>
+  <testcase name="testGetTransactionECP02()" classname="TestsTrabalho1.TestBasicOrganization" time="0.0"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

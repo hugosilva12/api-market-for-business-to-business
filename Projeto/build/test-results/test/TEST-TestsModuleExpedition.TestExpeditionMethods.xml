@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="TestsModuleExpedition.TestExpeditionMethods" tests="9" skipped="0" failures="0" errors="0" timestamp="2022-01-20T22:56:39" hostname="DESKTOP-HSBC8M0" time="0.167">
+  <properties/>
+  <testcase name="testExportGroupOrdersForFileJsonECP01()" classname="TestsModuleExpedition.TestExpeditionMethods" time="0.067"/>
+  <testcase name="testExportGroupOrdersForFileJsonECP02()" classname="TestsModuleExpedition.TestExpeditionMethods" time="0.002"/>
+  <testcase name="testGetArrayOrdersByDistrictBV01()" classname="TestsModuleExpedition.TestExpeditionMethods" time="0.002"/>
+  <testcase name="testGetArrayOrdersByDistrictBV02()" classname="TestsModuleExpedition.TestExpeditionMethods" time="0.003"/>
+  <testcase name="testGetArrayOrdersByDistrictBV03()" classname="TestsModuleExpedition.TestExpeditionMethods" time="0.002"/>
+  <testcase name="testGetArrayOrdersByDistrictECP01()" classname="TestsModuleExpedition.TestExpeditionMethods" time="0.02"/>
+  <testcase name="testGroupOrdersByTrucksBVA01()" classname="TestsModuleExpedition.TestExpeditionMethods" time="0.003"/>
+  <testcase name="testGroupOrdersByTrucksECP01()" classname="TestsModuleExpedition.TestExpeditionMethods" time="0.062"/>
+  <testcase name="testGroupOrdersByTrucksECP02()" classname="TestsModuleExpedition.TestExpeditionMethods" time="0.002"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

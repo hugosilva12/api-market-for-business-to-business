@@ -1,0 +1,62 @@
+image: gradle:jdk13
+stages:
+  - build
+  - codeInspection
+  - test
+  
+variables:
+  GIT_STRATEGY: clone
+  GIT_DEPTH: 10
+  GRADLE_OPTS: "-Dorg.gradle.daemon=false"
+
+before_script:
+  - echo "Start Automated Build,Test and Code Inspection"
+  - chmod +x ./Projeto/gradlew
+  - export GRADLE_USER_HOME=`pwd`./Projeto/.gradle
+
+cache:
+  paths:
+    - ./Projeto/.gradle/wrapper
+    - ./Projeto/.gradle/caches
+
+build:
+  stage: build
+  script:
+    - cd ./Projeto
+    - ./gradlew assemble
+  artifacts:
+    paths:
+      - ./Projeto/build/libs/*.jar
+
+check_quality:
+  stage: codeInspection
+  script:
+    - cd ./Projeto
+    - ./gradlew pmdMain
+  artifacts:
+    paths:
+      - ./Projeto/build/reports/pmd* 
+ 
+test_black_box:
+  stage: test
+  script:
+    - cd ./Projeto
+    - ./gradlew test
+  artifacts:
+    paths:
+      - ./Projeto/build/test-results/test/TEST-*.xml
+
+test_white_box:
+  stage: test
+  script:
+    - cd ./Projeto
+    - ./gradlew jacocoTestReport
+  artifacts:
+    paths:
+      - ./Projeto/build/reports/jacoco*
+
+
+
+after_script:
+  - echo "End Automated Test and Code Inspection"
+

@@ -1,0 +1,30 @@
+[
+  {
+    "Trucks": [
+      {
+        "AvaibleCapacity": 62.9,
+        "TruckName": "Truck1"
+      },
+      {
+        "AvaibleCapacity": 9.999999974752427E-7,
+        "TruckName": "Truck2"
+      }
+    ],
+    "NumberTrucks": 2,
+    "District": "Porto"
+  },
+  {
+    "Trucks": [
+      {
+        "AvaibleCapacity": 62.9,
+        "TruckName": "Truck1"
+      },
+      {
+        "AvaibleCapacity": 9.999999974752427E-7,
+        "TruckName": "Truck2"
+      }
+    ],
+    "NumberTrucks": 2,
+    "District": "Porto"
+  }
+]

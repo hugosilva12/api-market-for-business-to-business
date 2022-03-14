@@ -1,0 +1,244 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="pt"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Orders.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Projeto</a> &gt; <a href="index.source.html" class="el_package">ModuleTransaction</a> &gt; <span class="el_source">Orders.java</span></div><h1>Orders.java</h1><pre class="source lang-java linenums">package ModuleTransaction;
+
+import ModuleTransaction.Orgcom.*;
+import ModuleTransaction.Orgcom.hashing.UnHashableException;
+
+import java.math.BigDecimal;
+import java.math.RoundingMode;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.Map;
+
+/**
+ * The Orders class provides the functionality of a basic orders in the API.
+ */
+public class Orders implements IOrders {
+
+    private ArrayList&lt;IOrder&gt; listOrders;
+    private BasicOrganization basicOrganization;
+    private OrdersMetricStatistics OrdersMetricStatistics;
+    private ArrayList&lt;Block&gt; listBlocks;
+
+<span class="fc" id="L22">    public Orders() {</span>
+<span class="fc" id="L23">        this.basicOrganization = new BasicOrganization();</span>
+<span class="fc" id="L24">        this.listOrders = new ArrayList&lt;&gt;();</span>
+<span class="fc" id="L25">        this.OrdersMetricStatistics = new OrdersMetricStatistics();</span>
+
+<span class="fc" id="L27">    }</span>
+
+    /**
+     * Return the {@link IOrder order} in the basicOrders list that have the same hash.
+     *
+     * @param IOrder the {@link IOrder order} to be checked.
+     * @return the {@link IProduct product} in the basicOrders list that have the same hash, null if not found.
+     * @throws UnHashableException if the order are not hashable.
+     */
+    @Override
+    public IOrder getOrder(IOrder IOrder) {
+<span class="fc bfc" id="L38" title="All 2 branches covered.">        if (IOrder == null) {</span>
+<span class="fc" id="L39">            throw new UnHashableException(&quot;Order cannot be nul.&quot;);</span>
+        }
+
+<span class="fc bfc" id="L42" title="All 2 branches covered.">        for (IOrder IOrderTemp : this.listOrders) {</span>
+<span class="fc bfc" id="L43" title="All 2 branches covered.">            if (IOrder.getHash().equals(IOrderTemp.getHash())) {</span>
+<span class="fc" id="L44">                return IOrder;</span>
+            }
+<span class="fc" id="L46">        }</span>
+
+<span class="fc" id="L48">        return null;</span>
+    }
+
+    /**
+     * Adds a order to the basicOrders list.
+     *
+     * @param IOrder the product to add.
+     * @return true if the order was added correctly or false is it was not added.
+     * @throws IllegalArgumentException if the order parameter is null.
+     */
+    @Override
+    public boolean addOrder(IOrder IOrder) {
+<span class="fc bfc" id="L60" title="All 2 branches covered.">        if (IOrder == null) {</span>
+<span class="fc" id="L61">            throw new IllegalArgumentException(&quot;Order cannot be null&quot;);</span>
+        }
+
+<span class="fc bfc" id="L64" title="All 2 branches covered.">        if (this.getOrder(IOrder) != null) {</span>
+<span class="fc" id="L65">            return false;</span>
+        }
+
+<span class="fc" id="L68">        this.listOrders.add(IOrder);</span>
+
+<span class="fc" id="L70">        return true;</span>
+    }
+
+    /**
+     * Returns the string representation of the basicOrders list.
+     *
+     * @return the string representation of the basicOrders list.
+     */
+    @Override
+    public String print() {
+<span class="nc" id="L80">        StringBuilder sb = new StringBuilder();</span>
+<span class="nc bnc" id="L81" title="All 2 branches missed.">        for (int print = 0; print &lt; this.listOrders.size(); print++) {</span>
+<span class="nc" id="L82">            sb.append(&quot;basicOrders{&quot;).append(this.listOrders.get(print).print());</span>
+        }
+<span class="nc" id="L84">        sb.append(&quot;}&quot;);</span>
+<span class="nc" id="L85">        return sb.toString();</span>
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    public int getNumberOrder() {
+<span class="nc" id="L93">        return this.listOrders.size();</span>
+    }
+
+    @Override //Test
+    public IOrder getOrderIndex(int index) {
+<span class="nc bnc" id="L98" title="All 4 branches missed.">        if (index &lt; 0 || index &gt;= this.listOrders.size()) {</span>
+<span class="nc" id="L99">            throw new IndexOutOfBoundsException(&quot;Index out of bounds&quot;);</span>
+        }
+<span class="nc" id="L101">        return this.listOrders.get(index);</span>
+    }
+
+    @Override
+    public double getOrderShippingCost(IOrder order) {
+<span class="fc bfc" id="L106" title="All 2 branches covered.">        if (order == null) {</span>
+<span class="fc" id="L107">            throw new IllegalArgumentException(&quot;Order cannot be null&quot;);</span>
+        }
+
+<span class="fc" id="L110">        BigDecimal shippingCost = new BigDecimal(order.getShippingCost());</span>
+<span class="fc" id="L111">        shippingCost = shippingCost.setScale(2, RoundingMode.HALF_UP);</span>
+
+<span class="fc" id="L113">        return shippingCost.doubleValue();</span>
+
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    public int registerOrdersInLedger() {
+<span class="fc bfc" id="L122" title="All 2 branches covered.">        if (listOrders.isEmpty()) {</span>
+<span class="fc" id="L123">            return 0;</span>
+        }
+<span class="fc bfc" id="L125" title="All 2 branches covered.">        for (int i = 0; i &lt; listOrders.size(); i++) {</span>
+<span class="fc bfc" id="L126" title="All 2 branches covered.">            if (listOrders.get(i).getStateOrder() != StateOrder.REGISTADA) {</span>
+<span class="fc" id="L127">                listOrders.get(i).setStateOrder(StateOrder.REGISTADA);</span>
+<span class="fc" id="L128">                Entity entitySender = listOrders.get(i).getSender();</span>
+<span class="fc" id="L129">                entitySender.addTokens(2);</span>
+<span class="fc" id="L130">                BasicTransaction basicTransactionSend = new BasicTransaction(entitySender, listOrders.get(i).getReceiver());</span>
+<span class="fc" id="L131">                BasicTransaction basicTransactionPayment = new BasicTransaction(entitySender, listOrders.get(i).getReceiver());</span>
+<span class="fc bfc" id="L132" title="All 2 branches covered.">                for (int j = 0; j &lt; listOrders.get(i).getProductCounter(); j++) {</span>
+<span class="fc" id="L133">                    BasicTransactionLine basicTransactionLineSend = new BasicTransactionLine(&quot;Send-Product-ID: &quot; + String.valueOf(listOrders.get(i).getProductByIndex(j).getId()), listOrders.get(i).getProductByIndex(j).getQuantity(), listOrders.get(i).getProductByIndex(j).getValue());</span>
+<span class="fc" id="L134">                    BasicTransactionLine basicTransactionLinePayment = new BasicTransactionLine(&quot;Payment-Product-ID:&quot; + String.valueOf(listOrders.get(i).getProductByIndex(j).getId()), listOrders.get(i).getProductByIndex(j).getQuantity(), listOrders.get(i).getProductByIndex(j).getValue());</span>
+<span class="fc" id="L135">                    basicTransactionSend.addTransactionLine(basicTransactionLineSend);</span>
+<span class="fc" id="L136">                    basicTransactionPayment.addTransactionLine(basicTransactionLinePayment);</span>
+                }
+<span class="fc" id="L138">                this.basicOrganization.addTransaction(basicTransactionSend);</span>
+<span class="fc" id="L139">                this.basicOrganization.addTransaction(basicTransactionPayment);</span>
+            }
+
+        }
+
+<span class="fc" id="L144">        return this.basicOrganization.registerTransactionsInLedger();</span>
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    public Iterator&lt;Transaction&gt; transactionIterator() {
+<span class="nc" id="L152">        return null;</span>
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    public double averageValueTransactions() {
+<span class="fc" id="L160">        listBlocks = getArrayListBlocks();</span>
+<span class="fc" id="L161">        return OrdersMetricStatistics.averageValueTransactions(listBlocks);</span>
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    public double averageNumberProductsTransaction() {
+<span class="fc" id="L169">        listBlocks = getArrayListBlocks();</span>
+<span class="fc" id="L170">        return OrdersMetricStatistics.averageNumberProductsTransaction(listBlocks);</span>
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    public Map&lt;String, Map&lt;String, Double&gt;&gt; averageValueSalesPurchasesDistrict() {
+<span class="fc" id="L178">        listBlocks = getArrayListBlocks();</span>
+<span class="fc" id="L179">        return OrdersMetricStatistics.averageValueSalesPurchasesDistrict(listBlocks);</span>
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    public Map&lt;String, Map&lt;String, Integer&gt;&gt; numberOrderSentReceivedByDistrict() {
+<span class="fc" id="L187">        listBlocks = getArrayListBlocks();</span>
+<span class="fc" id="L188">        return OrdersMetricStatistics.numberOrderSentReceivedByDistrict(listBlocks);</span>
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    public double standardDeviationTransactions() {
+<span class="fc" id="L196">        listBlocks = getArrayListBlocks();</span>
+<span class="fc" id="L197">        return OrdersMetricStatistics.standardDeviationTransactions(listBlocks);</span>
+    }
+
+    @Override
+    public double standardDeviationNumberProductTransactions() {
+<span class="fc" id="L202">        listBlocks = getArrayListBlocks();</span>
+<span class="fc" id="L203">        return OrdersMetricStatistics.standardDeviationNumberProductTransactions(listBlocks);</span>
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    public ArrayList&lt;Block&gt; getArrayListBlocks() {
+<span class="fc" id="L211">        Iterator&lt;Block&gt; iteratorBlock = this.basicOrganization.ledgerIterator();</span>
+<span class="fc" id="L212">        ArrayList&lt;Block&gt; listBlocks = new ArrayList&lt;Block&gt;();</span>
+<span class="fc bfc" id="L213" title="All 2 branches covered.">        while (iteratorBlock.hasNext())</span>
+<span class="fc" id="L214">            listBlocks.add(iteratorBlock.next());</span>
+<span class="fc" id="L215">        return listBlocks;</span>
+    }
+
+    /**
+     * @return the hash value of the basicOrders list.
+     */
+    @Override
+    public Iterator&lt;IOrder&gt; iterator() {
+<span class="nc" id="L223">        return this.listOrders.iterator();</span>
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    public ArrayList&lt;IOrder&gt; getBasicOrders() {
+<span class="nc" id="L231">        return listOrders;</span>
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    public void setBasicOrders(ArrayList&lt;IOrder&gt; basicIOrders) {
+<span class="nc" id="L239">        this.listOrders = basicIOrders;</span>
+<span class="nc" id="L240">    }</span>
+
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.6.202009150832</span></div></body></html>

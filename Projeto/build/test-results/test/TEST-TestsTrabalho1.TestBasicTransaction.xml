@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="TestsTrabalho1.TestBasicTransaction" tests="14" skipped="0" failures="0" errors="0" timestamp="2022-01-20T22:56:40" hostname="DESKTOP-HSBC8M0" time="0.011">
+  <properties/>
+  <testcase name="testBasicTransactionBVA01()" classname="TestsTrabalho1.TestBasicTransaction" time="0.0"/>
+  <testcase name="testBasicTransactionECP01()" classname="TestsTrabalho1.TestBasicTransaction" time="0.0"/>
+  <testcase name="testAddTransactionLineBVA01()" classname="TestsTrabalho1.TestBasicTransaction" time="0.001"/>
+  <testcase name="testAddTransactionLineECP01()" classname="TestsTrabalho1.TestBasicTransaction" time="0.001"/>
+  <testcase name="testAddTransactionLineECP02()" classname="TestsTrabalho1.TestBasicTransaction" time="0.001"/>
+  <testcase name="testGetTotalValueECP01()" classname="TestsTrabalho1.TestBasicTransaction" time="0.0"/>
+  <testcase name="testGetTransactionLineBVA01()" classname="TestsTrabalho1.TestBasicTransaction" time="0.0"/>
+  <testcase name="testGetTransactionLineECP01()" classname="TestsTrabalho1.TestBasicTransaction" time="0.0"/>
+  <testcase name="testGetTransactionLineECP02()" classname="TestsTrabalho1.TestBasicTransaction" time="0.001"/>
+  <testcase name="testRemoveTransactionLineBVA01()" classname="TestsTrabalho1.TestBasicTransaction" time="0.001"/>
+  <testcase name="testRemoveTransactionLineBVA02()" classname="TestsTrabalho1.TestBasicTransaction" time="0.0"/>
+  <testcase name="testRemoveTransactionLineECP01()" classname="TestsTrabalho1.TestBasicTransaction" time="0.0"/>
+  <testcase name="testRemoveTransactionLineECP02()" classname="TestsTrabalho1.TestBasicTransaction" time="0.001"/>
+  <testcase name="testGetTransactionCountECP01()" classname="TestsTrabalho1.TestBasicTransaction" time="0.0"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

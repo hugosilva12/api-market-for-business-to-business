@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="pt"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Truck.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Projeto</a> &gt; <a href="index.source.html" class="el_package">TestsModuleExpedition</a> &gt; <span class="el_source">Truck.java</span></div><h1>Truck.java</h1><pre class="source lang-java linenums">package TestsModuleExpedition;
+
+
+import ApiUse.IOrder;
+import JsonOperations.ImportConfigsTruck;
+
+import java.util.ArrayList;
+
+/**
+ * The Container class provides the functionality of a container in the API.
+ */
+public class Truck implements ITruck {
+
+    private String nameContainer;
+<span class="fc" id="L15">    private final String pathFile = &quot;filesJson/capacityTruck.json&quot;;</span>
+    private Double capacity;
+<span class="fc" id="L17">    private ArrayList&lt;IProductsInsideTruck&gt; listProductsInsideTruck = new ArrayList&lt;IProductsInsideTruck&gt;();</span>
+<span class="fc" id="L18">    ImportConfigsTruck importConfigsTruck = new ImportConfigsTruck();</span>
+
+
+<span class="fc" id="L21">    public Truck(String name) {</span>
+<span class="fc bfc" id="L22" title="All 2 branches covered.">        if (name == null) {</span>
+<span class="fc" id="L23">            throw new IllegalArgumentException(&quot;name cannot be null.&quot;);</span>
+        }
+<span class="fc bfc" id="L25" title="All 2 branches covered.">        if (name.isEmpty()) {</span>
+<span class="fc" id="L26">            throw new IllegalArgumentException(&quot;name cannot be empty.&quot;);</span>
+        }
+<span class="fc" id="L28">        this.nameContainer = name;</span>
+<span class="fc" id="L29">        this.capacity = importConfigsTruck.importConfigCapacity(pathFile);</span>
+<span class="fc" id="L30">    }</span>
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    public boolean addProductInTruck(String idOrder, String idProduct, Double volume) {
+<span class="fc bfc" id="L37" title="All 4 branches covered.">        if (idOrder == null || idProduct == null) {</span>
+<span class="fc" id="L38">            throw new IllegalArgumentException(&quot;String cannot be null.&quot;);</span>
+        }
+<span class="pc bpc" id="L40" title="1 of 4 branches missed.">        if (idOrder.isEmpty() || idProduct.isEmpty()) {</span>
+<span class="fc" id="L41">            throw new IllegalArgumentException(&quot;Strings cannot be null.&quot;);</span>
+        }
+<span class="fc bfc" id="L43" title="All 2 branches covered.">        if (capacity &lt; volume) {</span>
+<span class="fc" id="L44">            return false;</span>
+        }
+<span class="fc bfc" id="L46" title="All 2 branches covered.">        if (volume &lt;= 0) {</span>
+<span class="fc" id="L47">            throw new IllegalArgumentException(&quot;Strings cannot be null.&quot;);</span>
+        }
+<span class="fc" id="L49">        ProductsInsideTruck productsInsideTruck = new ProductsInsideTruck(idOrder, idProduct, 1, volume);</span>
+<span class="fc" id="L50">        IProductsInsideTruck getProductsInsideTruck = getProductContainer(productsInsideTruck);</span>
+<span class="fc" id="L51">        capacity = capacity - volume;</span>
+<span class="fc bfc" id="L52" title="All 2 branches covered.">        if (getProductsInsideTruck == null) {</span>
+<span class="fc" id="L53">            listProductsInsideTruck.add(productsInsideTruck);</span>
+        } else {
+<span class="fc" id="L55">            getProductsInsideTruck.setQuantity(getProductsInsideTruck.getQuantity() + 1);</span>
+<span class="fc" id="L56">            listProductsInsideTruck.add(getProductsInsideTruck);</span>
+        }
+<span class="fc" id="L58">        return true;</span>
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    public boolean addAllOrderInTruck(IOrder order) {
+<span class="fc bfc" id="L66" title="All 2 branches covered.">        if (order == null) {</span>
+<span class="fc" id="L67">            throw new IllegalArgumentException(&quot;name cannot be null.&quot;);</span>
+        }
+<span class="fc bfc" id="L69" title="All 2 branches covered.">        if (capacity &lt; order.getOrderVolum()) {</span>
+<span class="fc" id="L70">            return false;</span>
+        }
+<span class="pc bpc" id="L72" title="1 of 4 branches missed.">        if (order.getOrderVolum() &gt; 63 || order.getOrderVolum() &lt;= 0) {</span>
+<span class="fc" id="L73">            throw new IllegalArgumentException(&quot;name cannot be null.&quot;);</span>
+        }
+<span class="fc" id="L75">        this.capacity = capacity - order.getOrderVolum();</span>
+
+<span class="fc bfc" id="L77" title="All 2 branches covered.">        for (int i = 0; i &lt; order.getProductCounter(); i++) {</span>
+<span class="fc" id="L78">            ProductsInsideTruck productsInsideTruck = new ProductsInsideTruck(order.getId(), String.valueOf(order.getProductByIndex(i).getId()), order.getProductByIndex(i).getQuantity(), order.getProductByIndex(i).getVolume());</span>
+<span class="fc" id="L79">            listProductsInsideTruck.add(productsInsideTruck);</span>
+        }
+<span class="fc" id="L81">        return true;</span>
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    public IProductsInsideTruck getProductContainer(IProductsInsideTruck iProductsInsideTruck) {
+<span class="fc bfc" id="L89" title="All 2 branches covered.">        if (iProductsInsideTruck == null) {</span>
+<span class="fc" id="L90">            throw new IllegalArgumentException(&quot;iProductsInsideTruck cannot be null.&quot;);</span>
+        }
+<span class="fc" id="L92">        IProductsInsideTruck containerLine = null;</span>
+<span class="fc bfc" id="L93" title="All 2 branches covered.">        for (IProductsInsideTruck containerLineOnly : listProductsInsideTruck) {</span>
+<span class="fc bfc" id="L94" title="All 2 branches covered.">            if (containerLineOnly.equals(iProductsInsideTruck)) {</span>
+<span class="fc" id="L95">                containerLine = containerLineOnly;</span>
+<span class="fc" id="L96">                listProductsInsideTruck.remove(containerLineOnly);</span>
+<span class="fc" id="L97">                return containerLine;</span>
+            }
+<span class="fc" id="L99">        }</span>
+<span class="fc" id="L100">        return null;</span>
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    public void print() {
+<span class="nc bnc" id="L108" title="All 2 branches missed.">        for (IProductsInsideTruck productsInsideTruckOnly : listProductsInsideTruck) {</span>
+<span class="nc" id="L109">            System.out.println(productsInsideTruckOnly.toString());</span>
+<span class="nc" id="L110">        }</span>
+<span class="nc" id="L111">    }</span>
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    public String getNameContainer() {
+<span class="fc" id="L118">        return nameContainer;</span>
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    public String toString() {
+<span class="nc" id="L126">        return &quot;Truck{&quot; +</span>
+                &quot;name='&quot; + nameContainer + '\'' +
+<span class="nc" id="L128">                &quot;, ocupation=' &quot; + (63 - capacity) + &quot;/63.00&quot; + '\'' +</span>
+                &quot;, orderExpedition=&quot; + listProductsInsideTruck +
+                '}';
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    public double availableCapacity() {
+<span class="fc" id="L138">        return this.capacity;</span>
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    public IProductsInsideTruck getProductListProductsInsideTruck(int index) {
+<span class="fc bfc" id="L146" title="All 4 branches covered.">        if (index &lt; 0 || index &gt;= listProductsInsideTruck.size()) {</span>
+<span class="fc" id="L147">            throw new IndexOutOfBoundsException(&quot;Index out of bounds&quot;);</span>
+        }
+<span class="fc" id="L149">        return this.listProductsInsideTruck.get(index);</span>
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    public int numberProductInContainer() {
+<span class="fc" id="L157">        return this.listProductsInsideTruck.size();</span>
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.6.202009150832</span></div></body></html>

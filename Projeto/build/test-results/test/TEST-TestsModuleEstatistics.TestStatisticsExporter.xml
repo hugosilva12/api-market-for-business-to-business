@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="TestsModuleEstatistics.TestStatisticsExporter" tests="13" skipped="0" failures="0" errors="0" timestamp="2022-01-20T22:56:39" hostname="DESKTOP-HSBC8M0" time="0.019">
+  <properties/>
+  <testcase name="testExportStatisticsECP01A()" classname="TestsModuleEstatistics.TestStatisticsExporter" time="0.005"/>
+  <testcase name="testExportStatisticsBVA01()" classname="TestsModuleEstatistics.TestStatisticsExporter" time="0.001"/>
+  <testcase name="testExportStatisticsBVA02()" classname="TestsModuleEstatistics.TestStatisticsExporter" time="0.001"/>
+  <testcase name="testExportStatisticsBVA03()" classname="TestsModuleEstatistics.TestStatisticsExporter" time="0.0"/>
+  <testcase name="testExportStatisticsBVA04()" classname="TestsModuleEstatistics.TestStatisticsExporter" time="0.0"/>
+  <testcase name="testExportStatisticsBVA05()" classname="TestsModuleEstatistics.TestStatisticsExporter" time="0.0"/>
+  <testcase name="testCreateFileBVA01()" classname="TestsModuleEstatistics.TestStatisticsExporter" time="0.001"/>
+  <testcase name="testCreateFileBVA02()" classname="TestsModuleEstatistics.TestStatisticsExporter" time="0.001"/>
+  <testcase name="testCreateFileECP01()" classname="TestsModuleEstatistics.TestStatisticsExporter" time="0.001"/>
+  <testcase name="testWriteToFileBVA01()" classname="TestsModuleEstatistics.TestStatisticsExporter" time="0.001"/>
+  <testcase name="testWriteToFileBVA02()" classname="TestsModuleEstatistics.TestStatisticsExporter" time="0.001"/>
+  <testcase name="testWriteToFileBVA03()" classname="TestsModuleEstatistics.TestStatisticsExporter" time="0.001"/>
+  <testcase name="testWriteToFileECP01()" classname="TestsModuleEstatistics.TestStatisticsExporter" time="0.001"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

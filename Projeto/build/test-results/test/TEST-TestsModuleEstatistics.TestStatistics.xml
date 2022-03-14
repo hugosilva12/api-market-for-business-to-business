@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="TestsModuleEstatistics.TestStatistics" tests="13" skipped="0" failures="0" errors="0" timestamp="2022-01-20T22:56:39" hostname="DESKTOP-HSBC8M0" time="0.356">
+  <properties/>
+  <testcase name="testStandardDeviationNumberProductTransactionsBVA01()" classname="TestsModuleEstatistics.TestStatistics" time="0.003"/>
+  <testcase name="testStandardDeviationNumberProductTransactionsECP01()" classname="TestsModuleEstatistics.TestStatistics" time="0.048"/>
+  <testcase name="testNumberOrdersByDistrictBVA01()" classname="TestsModuleEstatistics.TestStatistics" time="0.002"/>
+  <testcase name="testNumberOrdersByDistrictECP01()" classname="TestsModuleEstatistics.TestStatistics" time="0.042"/>
+  <testcase name="testAverageValueSalesPurchasesDistrictBVA01()" classname="TestsModuleEstatistics.TestStatistics" time="0.002"/>
+  <testcase name="testAverageValueSalesPurchasesDistrictBVA02()" classname="TestsModuleEstatistics.TestStatistics" time="0.002"/>
+  <testcase name="testAverageValueSalesPurchasesDistrictECP01()" classname="TestsModuleEstatistics.TestStatistics" time="0.047"/>
+  <testcase name="testAverageValueSalesPurchasesDistrictECP02()" classname="TestsModuleEstatistics.TestStatistics" time="0.042"/>
+  <testcase name="testStandardDeviationTransactionsBVA01()" classname="TestsModuleEstatistics.TestStatistics" time="0.002"/>
+  <testcase name="testStandardDeviationTransactionsECP01()" classname="TestsModuleEstatistics.TestStatistics" time="0.052"/>
+  <testcase name="testAverageValueTransactionsECP01()" classname="TestsModuleEstatistics.TestStatistics" time="0.057"/>
+  <testcase name="testAverageNumberProductsTransactionBVA01()" classname="TestsModuleEstatistics.TestStatistics" time="0.003"/>
+  <testcase name="testAverageNumberProductsTransactionECP01()" classname="TestsModuleEstatistics.TestStatistics" time="0.046"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

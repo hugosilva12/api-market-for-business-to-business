@@ -1,0 +1,299 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="pt"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Order.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Projeto</a> &gt; <a href="index.source.html" class="el_package">ApiUse</a> &gt; <span class="el_source">Order.java</span></div><h1>Order.java</h1><pre class="source lang-java linenums">package ApiUse;
+
+import JsonOperations.ImportDistanceTableKM;
+import ModuleCost.IDistanceTable;
+import ModuleTransaction.Orgcom.Entity;
+import ModuleTransaction.Orgcom.hashing.HashUtils;
+
+import java.math.BigDecimal;
+import java.math.RoundingMode;
+import java.util.ArrayList;
+import java.util.Iterator;
+
+/**
+ * The Order class provides the functionality of a basic order in the system.
+ */
+public class Order implements IOrder {
+<span class="fc" id="L17">    private final String PathFile = &quot;filesJson/DistanceCostsTable.json&quot;;</span>
+    private final String id;
+    private final String date;
+    private final Entity sender;
+    private final Entity receiver;
+<span class="fc" id="L22">    private double shippingCost = 0;</span>
+<span class="fc" id="L23">    private double price = 0;</span>
+<span class="fc" id="L24">    private double orderVolum = 0;</span>
+<span class="fc" id="L25">    private double orderWeight = 0;</span>
+    private StateOrder stateOrder;
+<span class="fc" id="L27">    private ArrayList&lt;IProduct&gt; IProducts = new ArrayList&lt;&gt;();</span>
+
+    /**
+     * Creates a new Order with the given id, date, sender entity, receiver entity;
+     *
+     * @param id       the id of the order
+     * @param date     the name of the order
+     * @param sender   the description of the order
+     * @param receiver the value of the order
+     * @throws IllegalArgumentException If any of the arguments are invalid (product id or date are null or empty,
+     *                                  or the sender or receiver are null).
+     */
+<span class="fc" id="L39">    public Order(String id, String date, Entity sender, Entity receiver) {</span>
+<span class="pc bpc" id="L40" title="1 of 4 branches missed.">        if (id == null || id.isEmpty()) {</span>
+<span class="fc" id="L41">            throw new IllegalArgumentException(&quot;Id cannot be null or empty&quot;);</span>
+        }
+<span class="pc bpc" id="L43" title="1 of 4 branches missed.">        if (date == null || date.isEmpty()) {</span>
+<span class="fc" id="L44">            throw new IllegalArgumentException(&quot;Date cannot be null or empty&quot;);</span>
+        }
+<span class="fc bfc" id="L46" title="All 4 branches covered.">        if (sender == null || receiver == null) {</span>
+<span class="fc" id="L47">            throw new IllegalArgumentException(&quot;Sender and receiver cannot be null.&quot;);</span>
+        }
+<span class="fc" id="L49">        this.id = id;</span>
+<span class="fc" id="L50">        this.date = date;</span>
+<span class="fc" id="L51">        this.sender = sender;</span>
+<span class="fc" id="L52">        this.receiver = receiver;</span>
+<span class="fc" id="L53">        this.stateOrder = StateOrder.AGUARDA_REGISTO;</span>
+<span class="fc" id="L54">    }</span>
+
+    /**
+     * Returns the id of the order.
+     *
+     * @return the id of the order.
+     */
+    @Override
+    public String getId() {
+<span class="fc" id="L63">        return this.id;</span>
+    }
+
+    /**
+     * Returns the date of the order.
+     *
+     * @return the date of the order.
+     */
+    @Override
+    public String getDate() {
+<span class="nc" id="L73">        return this.date;</span>
+    }
+
+    /**
+     * Returns the sender entity of the order.
+     *
+     * @return the sender entity of the order.
+     */
+    @Override
+    public Entity getSender() {
+<span class="fc" id="L83">        return this.sender;</span>
+    }
+
+    /**
+     * Returns the receiver entity of the order.
+     *
+     * @return the receiver entity of the order.
+     */
+    @Override
+    public Entity getReceiver() {
+<span class="fc" id="L93">        return this.receiver;</span>
+    }
+
+    /**
+     * Returns the counter of the different products of the order.
+     *
+     * @return the counter of the different products of the order.
+     */
+    @Override
+    public int getProductCounter() {
+<span class="fc" id="L103">        return this.IProducts.size();</span>
+    }
+
+    /**
+     * Return the Shipping Cost of the order.
+     *
+     * @return the Shipping Cost of the order.
+     */
+    @Override
+    public double getShippingCost() {
+<span class="fc" id="L113">        return shippingCost;</span>
+    }
+
+    /**
+     * Returns the price of the order.
+     *
+     * @return the price of the order.
+     */
+    @Override
+    public Double getPrice() {
+<span class="nc" id="L123">        return this.price;</span>
+    }
+
+    /**
+     * Returns the total volume of the order.
+     *
+     * @return the total volume of the order.
+     */
+    @Override
+    public double getOrderVolum() {
+<span class="fc" id="L133">        return this.orderVolum;</span>
+    }
+
+    /**
+     * Returns the weight volume of the order.
+     *
+     * @return the weight volume of the order.
+     */
+    @Override
+    public double getOrderWeight() {
+<span class="nc" id="L143">        return this.orderWeight;</span>
+    }
+
+    /**
+     * Return the {@link IProduct product} in the order that have the same hash.
+     *
+     * @param IProduct the {@link IProduct product} to be checked.
+     * @return the {@link IProduct product} in the order that have the same hash, null if not found.
+     * @throws IllegalArgumentException if the product are not hashable.
+     */
+    @Override
+    public IProduct getProduct(IProduct IProduct) {
+<span class="fc bfc" id="L155" title="All 2 branches covered.">        if (IProduct == null) {</span>
+<span class="fc" id="L156">            throw new IllegalArgumentException(&quot;Product cannot be null.&quot;);</span>
+        }
+
+<span class="fc bfc" id="L159" title="All 2 branches covered.">        for (IProduct IProductTemp : this.IProducts) {</span>
+<span class="fc bfc" id="L160" title="All 2 branches covered.">            if (IProduct.getHash().equals(IProductTemp.getHash())) {</span>
+<span class="fc" id="L161">                return IProduct;</span>
+            }
+<span class="fc" id="L163">        }</span>
+
+<span class="fc" id="L165">        return null;</span>
+    }
+
+    /**
+     * Adds a product to the order.
+     *
+     * @param IProduct the product to add.
+     * @return true if the product was added correctly or false is it was not added.
+     * @throws IllegalArgumentException if the product parameter is null.
+     */
+    @Override
+    public boolean addProduct(IProduct IProduct) {
+<span class="fc bfc" id="L177" title="All 2 branches covered.">        if (IProduct == null) {</span>
+<span class="fc" id="L178">            throw new IllegalArgumentException(&quot;Product cannot be null.&quot;);</span>
+        }
+
+<span class="fc bfc" id="L181" title="All 2 branches covered.">        if (this.getProduct(IProduct) != null) {</span>
+<span class="fc" id="L182">            return false;</span>
+        }
+
+<span class="fc" id="L185">        this.IProducts.add(IProduct);</span>
+<span class="fc" id="L186">        this.orderVolum += IProduct.getVolume() * IProduct.getQuantity();</span>
+<span class="fc" id="L187">        this.orderWeight += IProduct.getWeight() * IProduct.getQuantity();</span>
+<span class="fc" id="L188">        this.shippingCostCalculation();</span>
+<span class="fc" id="L189">        this.price += IProduct.getValue() * IProduct.getQuantity();</span>
+
+<span class="fc" id="L191">        return true;</span>
+    }
+
+    /**
+     * Return the {@link IProduct product} in the order that have the gaven index.
+     *
+     * @param index the index of the product list to be found.
+     * @return the {@link IProduct product} in the order that have the gaven index.
+     * @throws IndexOutOfBoundsException if the order index is invalid.
+     */
+    @Override
+    public IProduct getProductByIndex(int index) {
+<span class="pc bpc" id="L203" title="2 of 4 branches missed.">        if (index &lt; 0 || index &gt;= this.IProducts.size()) {</span>
+<span class="nc" id="L204">            throw new IndexOutOfBoundsException(&quot;Index out of bounds&quot;);</span>
+        }
+<span class="fc" id="L206">        return this.IProducts.get(index);</span>
+    }
+
+    @Override
+    public double shippingCostCalculation() {
+<span class="fc" id="L211">        ImportDistanceTableKM importDistanceTableKM = new ImportDistanceTableKM();</span>
+        IDistanceTable distanceTable;
+<span class="fc" id="L213">        int distance = 0;</span>
+<span class="fc" id="L214">        double cost = 0;</span>
+
+<span class="fc bfc" id="L216" title="All 2 branches covered.">        if (this.sender.getDistrict().equals(this.receiver.getDistrict())) {</span>
+<span class="fc" id="L217">            return this.shippingCost = 0;</span>
+        }
+
+<span class="fc" id="L220">        distanceTable = importDistanceTableKM.importCostsTableKM(PathFile);</span>
+
+<span class="fc" id="L222">        distance = distanceTable.getDistanceValueFromShipping(this.sender, this.receiver);</span>
+
+
+<span class="fc" id="L225">        cost += (this.orderWeight + distance) * 0.25;</span>
+
+<span class="fc" id="L227">        cost += 0.15 * this.orderVolum;</span>
+
+<span class="fc" id="L229">        BigDecimal shippingCostTemp = new BigDecimal(cost);</span>
+<span class="fc" id="L230">        shippingCostTemp = shippingCostTemp.setScale(2, RoundingMode.HALF_UP);</span>
+
+<span class="fc" id="L232">        this.shippingCost = shippingCostTemp.doubleValue();</span>
+
+<span class="fc" id="L234">        return this.shippingCost;</span>
+    }
+
+    /**
+     * Returns the string representation of the order.
+     *
+     * @return the string representation of the order.
+     */
+    @Override
+    public String print() {
+<span class="nc" id="L244">        StringBuilder sb = new StringBuilder();</span>
+<span class="nc" id="L245">        sb.append(&quot;Order{&quot;);</span>
+<span class="nc" id="L246">        sb.append(&quot;id: &quot;).append(this.id);</span>
+<span class="nc" id="L247">        sb.append(&quot;, date: &quot;).append(this.date);</span>
+<span class="nc" id="L248">        sb.append(&quot;, price: &quot;).append(this.price);</span>
+<span class="nc" id="L249">        sb.append(&quot;, productCounter: &quot;).append(this.IProducts.size());</span>
+<span class="nc" id="L250">        sb.append(&quot;, sender: &quot;).append(this.sender);</span>
+<span class="nc" id="L251">        sb.append(&quot;, receiver: &quot;).append(this.receiver);</span>
+<span class="nc" id="L252">        sb.append(&quot;, volume: &quot;).append(this.orderVolum);</span>
+<span class="nc" id="L253">        sb.append(&quot;, weight: &quot;).append(this.orderWeight);</span>
+<span class="nc" id="L254">        sb.append(&quot;, shippingCost:&quot;).append(this.shippingCost);</span>
+<span class="nc" id="L255">        sb.append(&quot;, state: &quot;).append(this.stateOrder.toString());</span>
+<span class="nc bnc" id="L256" title="All 2 branches missed.">        for (int print = 0; print &lt; this.IProducts.size(); print++) {</span>
+<span class="nc" id="L257">            sb.append(&quot;, products: &quot;).append(IProducts.get(print).print());</span>
+        }
+<span class="nc" id="L259">        sb.append(&quot;}&quot;);</span>
+<span class="nc" id="L260">        return sb.toString();</span>
+    }
+
+    /**
+     * @return the hash value of the order.
+     */
+    @Override
+    public String getHash() {
+<span class="fc" id="L268">        return HashUtils.getHash(this.id + this.date + this.price + this.IProducts.size() + this.sender + this.receiver + this.orderVolum + this.orderWeight);</span>
+    }
+
+    /**
+     * Returns the iterator value of the products array of the order.
+     *
+     * @return the iterator value of the products array of the order.
+     */
+    @Override
+    public Iterator&lt;IProduct&gt; iterator() {
+<span class="nc" id="L278">        return this.IProducts.iterator();</span>
+    }
+
+    /**
+     * Return the state of Basic Order
+     *
+     * @return the state of Basic Order
+     */
+    public StateOrder getStateOrder() {
+<span class="fc" id="L287">        return stateOrder;</span>
+    }
+
+    /**
+     * Set the attribute of enum StateOrder
+     *
+     * @param stateOrder the state of {@link StateOrder basicOrders}
+     */
+    public void setStateOrder(StateOrder stateOrder) {
+<span class="fc" id="L296">        this.stateOrder = stateOrder;</span>
+<span class="fc" id="L297">    }</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.6.202009150832</span></div></body></html>

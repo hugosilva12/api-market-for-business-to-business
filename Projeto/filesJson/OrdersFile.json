@@ -1,0 +1,76 @@
+{
+    "orders": [
+        {
+            "id": "202101031",
+            "date": "2021-01-01",
+            "sender": {
+                "name": "John Doe",
+                "address": "street 1",
+                "district": "Porto",
+                "vat": "12345679"
+            },
+            "receiver": {
+                "name": "Jane Smith",
+                "address": "street 2",
+                "district": "Lisboa",
+                "vat": "234567890"
+            },
+            "products": [
+                {
+                    "id": 1,
+                    "name": "product 1",
+                    "description": "description product 1",
+                    "price": 10.25,
+                    "quantity": 10,
+                    "volume-m3": 2,
+                    "weight-kg": 5
+                },
+                {
+                    "id": 2,
+                    "name": "product 2",
+                    "description": "description product 2",
+                    "price": 7.45,
+                    "quantity": 15,
+                    "volume-m3": 0.5,
+                    "weight-kg": 2.5
+                }
+            ]
+        },
+        {
+            "id": "20210031",
+            "date": "2021-01-01",
+            "sender": {
+                "name": "John Doe",
+                "address": "street 1",
+                "district": "Porto",
+                "vat": "12345679"
+            },
+            "receiver": {
+                "name": "Jane Smith",
+                "address": "street 2",
+                "district": "Lisboa",
+                "vat": "234567890"
+            },
+            "products": [
+                {
+                    "id": 1,
+                    "name": "product 1",
+                    "description": "description product 1",
+                    "price": 10.25,
+                    "quantity": 1,
+                    "volume-m3": 2,
+                    "weight-kg": 5
+                },
+                {
+                    "id": 2,
+                    "name": "product 2",
+                    "description": "description product 2",
+                    "price": 7.45,
+                    "quantity": 1,
+                    "volume-m3": 0.5,
+                    "weight-kg": 2.5
+                }
+            ]
+        }
+    ]
+}

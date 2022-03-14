@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="TestApiUse.TestOrder" tests="13" skipped="0" failures="0" errors="0" timestamp="2022-01-20T22:56:38" hostname="DESKTOP-HSBC8M0" time="0.112">
+  <properties/>
+  <testcase name="testGetProductBVA01()" classname="TestApiUse.TestOrder" time="0.002"/>
+  <testcase name="testGetProductECP01()" classname="TestApiUse.TestOrder" time="0.021"/>
+  <testcase name="testGetProductECP02()" classname="TestApiUse.TestOrder" time="0.001"/>
+  <testcase name="testAddProductBVA01()" classname="TestApiUse.TestOrder" time="0.001"/>
+  <testcase name="testAddProductECP01()" classname="TestApiUse.TestOrder" time="0.021"/>
+  <testcase name="testAddProductECP02()" classname="TestApiUse.TestOrder" time="0.018"/>
+  <testcase name="testShippingCostCalculationECP01()" classname="TestApiUse.TestOrder" time="0.02"/>
+  <testcase name="testShippingCostCalculationECP02()" classname="TestApiUse.TestOrder" time="0.001"/>
+  <testcase name="testBasicOrderBVA01()" classname="TestApiUse.TestOrder" time="0.008"/>
+  <testcase name="testBasicOrderBVA02()" classname="TestApiUse.TestOrder" time="0.003"/>
+  <testcase name="testBasicOrderBVA03()" classname="TestApiUse.TestOrder" time="0.002"/>
+  <testcase name="testBasicOrderBVA04()" classname="TestApiUse.TestOrder" time="0.001"/>
+  <testcase name="testBasicOrderECP01()" classname="TestApiUse.TestOrder" time="0.002"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

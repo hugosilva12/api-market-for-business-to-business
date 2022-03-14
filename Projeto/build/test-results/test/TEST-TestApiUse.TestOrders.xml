@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="TestApiUse.TestOrders" tests="17" skipped="0" failures="0" errors="0" timestamp="2022-01-20T22:56:38" hostname="DESKTOP-HSBC8M0" time="0.428">
+  <properties/>
+  <testcase name="testGetOrderBVA01()" classname="TestApiUse.TestOrders" time="0.021"/>
+  <testcase name="testGetOrderECP01()" classname="TestApiUse.TestOrders" time="0.02"/>
+  <testcase name="testGetOrderECP02()" classname="TestApiUse.TestOrders" time="0.02"/>
+  <testcase name="testAddOrderBVA01()" classname="TestApiUse.TestOrders" time="0.024"/>
+  <testcase name="testAddOrderECP01()" classname="TestApiUse.TestOrders" time="0.019"/>
+  <testcase name="testAddOrderECP02()" classname="TestApiUse.TestOrders" time="0.023"/>
+  <testcase name="testRegisterOrdersInLedgerBVA01()" classname="TestApiUse.TestOrders" time="0.022"/>
+  <testcase name="testRegisterOrdersInLedgerBVA02()" classname="TestApiUse.TestOrders" time="0.082"/>
+  <testcase name="testRegisterOrdersInLedgerBVA03()" classname="TestApiUse.TestOrders" time="0.056"/>
+  <testcase name="testRegisterOrdersInLedgerECP01()" classname="TestApiUse.TestOrders" time="0.03"/>
+  <testcase name="testRegisterOrdersInLedgerECP02()" classname="TestApiUse.TestOrders" time="0.027"/>
+  <testcase name="testGetOrderShippingCostBVA01()" classname="TestApiUse.TestOrders" time="0.01"/>
+  <testcase name="testGetOrderShippingCostECP01()" classname="TestApiUse.TestOrders" time="0.009"/>
+  <testcase name="testGetOrderShippingCostECP02()" classname="TestApiUse.TestOrders" time="0.019"/>
+  <testcase name="testGetOrderIndexBVA01()" classname="TestApiUse.TestOrders" time="0.011"/>
+  <testcase name="testGetOrderIndexBVA02()" classname="TestApiUse.TestOrders" time="0.012"/>
+  <testcase name="testGetOrderIndexECP01()" classname="TestApiUse.TestOrders" time="0.01"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

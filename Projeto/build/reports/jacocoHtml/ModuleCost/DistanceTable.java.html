@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="pt"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>DistanceTable.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Projeto</a> &gt; <a href="index.source.html" class="el_package">ModuleCost</a> &gt; <span class="el_source">DistanceTable.java</span></div><h1>DistanceTable.java</h1><pre class="source lang-java linenums">package ModuleCost;
+
+import ModuleTransaction.Orgcom.Entity;
+
+import java.util.ArrayList;
+import java.util.Iterator;
+
+/**
+ * Class that stores the distance between all districts
+ */
+<span class="fc" id="L11">public class DistanceTable implements IDistanceTable {</span>
+
+<span class="fc" id="L13">    private ArrayList&lt;IDistrictDistance&gt; basicDistrictsDistances = new ArrayList&lt;&gt;();</span>
+
+    /**
+     * {@inheritDoc}
+     */
+    public IDistrictDistance getDistrictDistance(IDistrictDistance districtCost) {
+<span class="fc bfc" id="L19" title="All 2 branches covered.">        if (districtCost == null) {</span>
+<span class="fc" id="L20">            throw new IllegalArgumentException(&quot;DistrictCost cannot be nul.&quot;);</span>
+        }
+
+<span class="fc bfc" id="L23" title="All 2 branches covered.">        for (IDistrictDistance districtCostTemp : this.basicDistrictsDistances) {</span>
+<span class="fc bfc" id="L24" title="All 2 branches covered.">            if (districtCost.getHash().equals(districtCostTemp.getHash())) {</span>
+<span class="fc" id="L25">                return districtCost;</span>
+            }
+<span class="fc" id="L27">        }</span>
+
+<span class="fc" id="L29">        return null;</span>
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public boolean addDistrictDistance(IDistrictDistance districtCost) {
+<span class="fc bfc" id="L36" title="All 2 branches covered.">        if(districtCost == null) {</span>
+<span class="fc" id="L37">            throw new IllegalArgumentException(&quot;districtCost cannot be null&quot;);</span>
+        }
+
+<span class="fc bfc" id="L40" title="All 2 branches covered.">        if (this.getDistrictDistance(districtCost) != null) {</span>
+<span class="fc" id="L41">            return false;</span>
+        }
+
+<span class="fc" id="L44">        this.basicDistrictsDistances.add(districtCost);</span>
+
+<span class="fc" id="L46">        return true;</span>
+    }
+
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    public int getDistanceValueFromShipping(Entity sender, Entity receiver) {
+<span class="fc bfc" id="L55" title="All 4 branches covered.">        if (sender == null || receiver == null) {</span>
+<span class="fc" id="L56">            throw new IllegalArgumentException(&quot;The entities can't be null.&quot;);</span>
+        }
+
+<span class="fc bfc" id="L59" title="All 2 branches covered.">        if (sender.getDistrict().equals(receiver.getDistrict())) {</span>
+<span class="fc" id="L60">            return 0;</span>
+        }
+
+<span class="fc bfc" id="L63" title="All 2 branches covered.">        for (int i = 0; i &lt; this.basicDistrictsDistances.size(); i++) {</span>
+<span class="fc bfc" id="L64" title="All 2 branches covered.">            if (sender.getDistrict().equals(this.basicDistrictsDistances.get(i).getName())) {</span>
+
+<span class="fc bfc" id="L66" title="All 2 branches covered.">                for (int j = 0; j &lt; this.basicDistrictsDistances.get(i).getDistances().size(); j++) {</span>
+
+<span class="fc bfc" id="L68" title="All 2 branches covered.">                    if (receiver.getDistrict().equals(this.basicDistrictsDistances.get(i).getDistances().get(j).getId())) {</span>
+<span class="fc" id="L69">                        return this.basicDistrictsDistances.get(i).getDistances().get(j).getDistanceValue();</span>
+                    }
+                }
+            }
+        }
+
+<span class="fc" id="L75">        return -1;</span>
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public String print() {
+<span class="nc" id="L82">        StringBuilder sb = new StringBuilder();</span>
+<span class="nc" id="L83">        sb.append(&quot;DistrictCostTable{&quot;);</span>
+<span class="nc bnc" id="L84" title="All 2 branches missed.">        for (int print = 0; print &lt; this.basicDistrictsDistances.size(); print++) {</span>
+<span class="nc" id="L85">            sb.append(&quot;  DistrictCost{&quot;).append(this.basicDistrictsDistances.get(print).print());</span>
+        }
+<span class="nc" id="L87">        sb.append(&quot;}&quot;);</span>
+<span class="nc" id="L88">        return sb.toString();</span>
+    }
+
+
+    public Iterator&lt;IDistrictDistance&gt; iterator() {
+<span class="nc" id="L93">        return this.basicDistrictsDistances.iterator();</span>
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.6.202009150832</span></div></body></html>

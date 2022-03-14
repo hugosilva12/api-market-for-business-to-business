@@ -1,0 +1,74 @@
+plugins {
+    id 'java'
+    id 'jacoco'
+    id 'pmd'
+}
+
+group 'org.example'
+version 'release1.0'
+
+repositories {
+    mavenCentral()
+    flatDir {
+        dirs 'libs'
+    }
+}
+
+
+dependencies {
+    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.7.0'
+    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.7.0'
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
+}
+
+test {
+    useJUnitPlatform()
+    finalizedBy jacocoTestReport
+}
+jacocoTestReport { //Não meter na primeira versão
+
+    reports {
+        dependsOn test
+        xml.required = false
+        csv.required = false
+        html.outputLocation = layout.buildDirectory.dir('/reports/jacocoHtml')
+    }
+}
+pmd {
+    ignoreFailures = true
+    consoleOutput = false
+    toolVersion = "6.21.0"
+    rulesMinimumPriority = 5
+    ruleSetFiles = files(layout.projectDirectory.dir('libs').dir('configs').file("plugin.xml"))
+}
+//CDS
+pmdMain {
+
+    File outDir = new File('build/reports/pmd/')
+
+    outDir.mkdirs()
+
+    ant.taskdef(name: 'cpd', classname: 'net.sourceforge.pmd.cpd.CPDTask',
+            classpath: configurations.pmd.asPath)
+
+    ant.cpd(minimumTokenCount: '5', format: 'text',
+            outputFile: new File(outDir, 'cpd.txt')) {
+        fileset(dir: 'src/main/java') {
+            include(name: '**/*.java')
+        }
+
+    }
+    gradle.projectsEvaluated {
+        tasks.withType(JavaCompile) {
+            options.compilerArgs << "-Xlint:deprecation"
+        }
+    }
+}
+
+
+jar {
+    manifest {
+        attributes "Main-Class": "Main"
+        attributes "Class-Path": 'json-simple-1.1.jar'
+    }
+}

@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="pt"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>BasicEntity.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Projeto</a> &gt; <a href="index.source.html" class="el_package">ModuleTransaction.Orgcom</a> &gt; <span class="el_source">BasicEntity.java</span></div><h1>BasicEntity.java</h1><pre class="source lang-java linenums">package ModuleTransaction.Orgcom;
+
+import java.util.UUID;
+
+/**
+ * the BasicEntity class provides the functionality of a basic entity in the system.
+ */
+public class BasicEntity implements Entity {
+
+    private final String uuid;
+    private final String name;
+    private final District district;
+    private int tokens;
+
+    /**
+     * Creates a new Entity with the given name and district.
+     * The UUID is generated automatically.
+     * The tokens are set to 0.
+     *
+     * @param name     the name of the entity
+     * @param district the district of the entity
+     * @throws IllegalArgumentException if the name is null or empty or the district is null
+     */
+<span class="fc" id="L24">    public BasicEntity(String name, District district) {</span>
+<span class="fc bfc" id="L25" title="All 4 branches covered.">        if (name == null || name.isEmpty()) {</span>
+<span class="fc" id="L26">            throw new IllegalArgumentException(&quot;Name cannot be null or empty&quot;);</span>
+        }
+
+<span class="pc bpc" id="L29" title="1 of 2 branches missed.">        if (district == null) {</span>
+<span class="nc" id="L30">            throw new IllegalArgumentException(&quot;District cannot be null&quot;);</span>
+        }
+
+<span class="fc" id="L33">        this.uuid = UUID.randomUUID().toString();</span>
+<span class="fc" id="L34">        this.name = name;</span>
+<span class="fc" id="L35">        this.district = district;</span>
+<span class="fc" id="L36">        this.tokens = 0;</span>
+<span class="fc" id="L37">    }</span>
+
+    @Override
+    public String getUUID() {
+<span class="fc" id="L41">        return this.uuid;</span>
+    }
+
+    @Override
+    public String getName() {
+<span class="nc" id="L46">        return this.name;</span>
+    }
+
+    @Override
+    public String getDistrict() {
+<span class="fc" id="L51">        return this.district.toString();</span>
+    }
+
+    @Override
+    public int getTokens() {
+<span class="fc" id="L56">        return this.tokens;</span>
+    }
+
+    @Override
+    public int addTokens(int tokens) {
+<span class="fc bfc" id="L61" title="All 2 branches covered.">        if (tokens &lt; 0) {</span>
+<span class="fc" id="L62">            throw new IllegalArgumentException(&quot;Cannot add negative tokens&quot;);</span>
+        }
+
+<span class="fc" id="L65">        this.tokens += tokens;</span>
+<span class="fc" id="L66">        return this.tokens;</span>
+    }
+
+    @Override
+    public void spendToken() {
+<span class="pc bpc" id="L71" title="1 of 2 branches missed.">        if ((this.tokens - 1) &lt; 0) {</span>
+<span class="nc" id="L72">            throw new IllegalStateException(&quot;Cannot spend tokens when there are none&quot;);</span>
+        }
+
+<span class="fc" id="L75">        this.tokens--;</span>
+<span class="fc" id="L76">    }</span>
+
+    /**
+     * Returns a string representation of the entity.
+     */
+    @Override
+    public String toString() {
+<span class="fc" id="L83">        StringBuilder sb = new StringBuilder();</span>
+<span class="fc" id="L84">        sb.append(&quot;Entity{&quot;);</span>
+<span class="fc" id="L85">        sb.append(&quot;uuid=&quot;).append(this.uuid);</span>
+<span class="fc" id="L86">        sb.append(&quot;, name=&quot;).append(this.name);</span>
+<span class="fc" id="L87">        sb.append(&quot;, district=&quot;).append(this.district);</span>
+<span class="fc" id="L88">        sb.append(&quot;, tokens=&quot;).append(this.tokens).append('}');</span>
+<span class="fc" id="L89">        return sb.toString();</span>
+    }
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.6.202009150832</span></div></body></html>

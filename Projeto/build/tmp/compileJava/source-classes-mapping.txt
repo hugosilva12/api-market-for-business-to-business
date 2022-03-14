@@ -1,0 +1,94 @@
+TestsModuleExpedition/IProductsInsideTruck.java
+ TestsModuleExpedition.IProductsInsideTruck
+TestsModuleExpedition/Truck.java
+ TestsModuleExpedition.Truck
+ModuleCost/IDistanceTable.java
+ ModuleCost.IDistanceTable
+ModuleCost/DistrictDistance.java
+ ModuleCost.DistrictDistance
+ModuleCost/IDistrictDistance.java
+ ModuleCost.IDistrictDistance
+TestsModuleExpedition/ProductsInsideTruck.java
+ TestsModuleExpedition.ProductsInsideTruck
+ModuleTransaction/Orgcom/BasicTransactionLine.java
+ ModuleTransaction.Orgcom.BasicTransactionLine
+ModuleTransaction/Orgcom/hashing/HashUtils.java
+ ModuleTransaction.Orgcom.hashing.HashUtils
+TestsModuleExpedition/IExpeditionMethods.java
+ TestsModuleExpedition.IExpeditionMethods
+ModuleTransaction/Orgcom/Entity.java
+ ModuleTransaction.Orgcom.Entity
+ModuleCost/DistanceTable.java
+ ModuleCost.DistanceTable
+ModuleTransaction/Orgcom/BasicBlock.java
+ ModuleTransaction.Orgcom.BasicBlock
+TestsModuleExpedition/ExpeditionMethods.java
+ TestsModuleExpedition.ExpeditionMethods
+ApiUse/IProduct.java
+ ApiUse.IProduct
+TestsModuleExpedition/GroupAllTrucks.java
+ TestsModuleExpedition.GroupAllTrucks
+JsonOperations/ImportDistanceTableKM.java
+ JsonOperations.ImportDistanceTableKM
+Main.java
+ Main
+TestsModuleExpedition/IGroupAllTrucks.java
+ TestsModuleExpedition.IGroupAllTrucks
+ApiUse/Orders.java
+ ApiUse.Orders
+Exceptions/ParseException.java
+ Exceptions.ParseException
+ModuleTransaction/Orgcom/Block.java
+ ModuleTransaction.Orgcom.Block
+ApiUse/Product.java
+ ApiUse.Product
+Exceptions/AverageException.java
+ Exceptions.AverageException
+ModuleTransaction/Orgcom/TransactionLine.java
+ ModuleTransaction.Orgcom.TransactionLine
+JsonOperations/MethodsJsonExporter.java
+ JsonOperations.MethodsJsonExporter
+ModuleTransaction/Orgcom/District.java
+ ModuleTransaction.Orgcom.District
+TestsModuleExpedition/DistrictTrucks.java
+ TestsModuleExpedition.DistrictTrucks
+ModuleTransaction/Orgcom/hashing/UnHashableException.java
+ ModuleTransaction.Orgcom.hashing.UnHashableException
+ModuleTransaction/Orgcom/BasicTransaction.java
+ ModuleTransaction.Orgcom.BasicTransaction
+JsonOperations/IMethodsJsonExporter.java
+ JsonOperations.IMethodsJsonExporter
+ModuleTransaction/Orgcom/hashing/Hashable.java
+ ModuleTransaction.Orgcom.hashing.Hashable
+JsonOperations/ImportOrders.java
+ JsonOperations.ImportOrders
+ApiUse/IOrder.java
+ ApiUse.IOrder
+ModuleTransaction/IStatistics.java
+ ModuleTransaction.IStatistics
+ModuleCost/IDistanceLine.java
+ ModuleCost.IDistanceLine
+ApiUse/StateOrder.java
+ ApiUse.StateOrder
+ApiUse/IOrders.java
+ ApiUse.IOrders
+ModuleTransaction/Orgcom/BasicEntity.java
+ ModuleTransaction.Orgcom.BasicEntity
+ModuleTransaction/Orgcom/Organization.java
+ ModuleTransaction.Orgcom.Organization
+TestsModuleExpedition/IDistrictTrucks.java
+ TestsModuleExpedition.IDistrictTrucks
+ApiUse/Order.java
+ ApiUse.Order
+ModuleTransaction/Orgcom/Transaction.java
+ ModuleTransaction.Orgcom.Transaction
+ModuleTransaction/Orgcom/BasicOrganization.java
+ ModuleTransaction.Orgcom.BasicOrganization
+TestsModuleExpedition/ITruck.java
+ TestsModuleExpedition.ITruck
+ModuleTransaction/OrdersMetricStatistics.java
+ ModuleTransaction.OrdersMetricStatistics
+JsonOperations/ImportConfigsTruck.java
+ JsonOperations.ImportConfigsTruck
+ModuleCost/DistanceLine.java
+ ModuleCost.DistanceLine

@@ -1,0 +1,40 @@
+TestApiUse/TestOrder.java
+ TestApiUse.TestOrder
+TestsImportTablekms/TestDistanceTable.java
+ TestsImportTablekms.TestDistanceTable
+TestsTrabalho1/TestBasicOrganization.java
+ TestsTrabalho1.TestBasicOrganization
+TestsModuleExpedition/TestDistrictTrucks.java
+ TestsModuleExpedition.TestDistrictTrucks
+TestsTrabalho1/TestBasicTransaction.java
+ TestsTrabalho1.TestBasicTransaction
+TestApiUse/TestOrders.java
+ TestApiUse.TestOrders
+TestsModuleExpedition/TestExpeditionMethods.java
+ TestsModuleExpedition.TestExpeditionMethods
+TestsImportTablekms/TestDistance.java
+ TestsImportTablekms.TestDistance
+TestsModuleEstatistics/TestStatistics.java
+ TestsModuleEstatistics.TestStatistics
+TestApiUse/TestImportOrders.java
+ TestApiUse.TestImportOrders
+TestsModuleExpedition/TestGroupAllTrucks.java
+ TestsModuleExpedition.TestGroupAllTrucks
+TestsModuleExpedition/TestProductsInsideTruck.java
+ TestsModuleExpedition.TestProductsInsideTruck
+TestsImportTablekms/TestBasicDistrictDistance.java
+ TestsImportTablekms.TestBasicDistrictDistance
+TestApiUse/TestProduct.java
+ TestApiUse.TestProduct
+TestsModuleEstatistics/TestStatisticsExporter.java
+ TestsModuleEstatistics.TestStatisticsExporter
+TestsImportTablekms/TestImportDistanceTableKM.java
+ TestsImportTablekms.TestImportDistanceTableKM
+TestsModuleExpedition/TestTruck.java
+ TestsModuleExpedition.TestTruck
+TestWhiteBox.java
+ TestWhiteBox
+TestsTrabalho1/TestBasicTransactionLine.java
+ TestsTrabalho1.TestBasicTransactionLine
+TestsTrabalho1/TestBasicEntity.java
+ TestBasicEntity

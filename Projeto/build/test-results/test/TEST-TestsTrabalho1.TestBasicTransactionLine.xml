@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="TestsTrabalho1.TestBasicTransactionLine" tests="7" skipped="0" failures="0" errors="0" timestamp="2022-01-20T22:56:40" hostname="DESKTOP-HSBC8M0" time="0.006">
+  <properties/>
+  <testcase name="testBasicTransactionLineBVA01()" classname="TestsTrabalho1.TestBasicTransactionLine" time="0.001"/>
+  <testcase name="testBasicTransactionLineBVA02()" classname="TestsTrabalho1.TestBasicTransactionLine" time="0.001"/>
+  <testcase name="testBasicTransactionLineBVA03()" classname="TestsTrabalho1.TestBasicTransactionLine" time="0.001"/>
+  <testcase name="testBasicTransactionLineBVA04()" classname="TestsTrabalho1.TestBasicTransactionLine" time="0.0"/>
+  <testcase name="testBasicTransactionLineBVA05()" classname="TestsTrabalho1.TestBasicTransactionLine" time="0.0"/>
+  <testcase name="testBasicTransactionLineBVA06()" classname="TestsTrabalho1.TestBasicTransactionLine" time="0.001"/>
+  <testcase name="testBasicTransactionLineECP01()" classname="TestsTrabalho1.TestBasicTransactionLine" time="0.0"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

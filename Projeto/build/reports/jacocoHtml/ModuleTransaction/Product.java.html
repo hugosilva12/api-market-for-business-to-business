@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="pt"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Product.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Projeto</a> &gt; <a href="index.source.html" class="el_package">ModuleTransaction</a> &gt; <span class="el_source">Product.java</span></div><h1>Product.java</h1><pre class="source lang-java linenums">package ModuleTransaction;
+
+import ModuleTransaction.Orgcom.hashing.HashUtils;
+
+/**
+ * This class stores the data of a product
+ */
+public class Product implements IProduct {
+
+    private final int id;
+    private final String name;
+    private final String description;
+    private final double value;
+    private final int quantity;
+    private final double volume;
+    private final double weight;
+
+    /**
+     * Creates a new Product with the given id, name, description, value, quantity and volume;
+     *
+     * @param id          the id of the product
+     * @param name        the name of the product
+     * @param description the description of the product
+     * @param value       the value of the product
+     * @param quantity    the quantity of the product
+     * @param volume      the volume of the product
+     * @param weight      the weight of the product
+     * @throws IllegalArgumentException If any of the arguments are invalid (product id or name or description are null or empty,
+     *                                                                       value, quantity, volume, or weight is less or equal than 0 and unitPrice is negative).
+     */
+<span class="fc" id="L31">    public Product(int id, String name, String description, double value, int quantity, double volume, double weight) {</span>
+<span class="fc bfc" id="L32" title="All 2 branches covered.">        if (id &lt; 0) {</span>
+<span class="fc" id="L33">            throw new IllegalArgumentException(&quot;Id cannot be negative&quot;);</span>
+        }
+<span class="fc bfc" id="L35" title="All 4 branches covered.">        if (name == null || name.isEmpty()) {</span>
+<span class="fc" id="L36">            throw new IllegalArgumentException(&quot;Name cannot be null or empty&quot;);</span>
+        }
+<span class="fc bfc" id="L38" title="All 4 branches covered.">        if (description == null || description.isEmpty()) {</span>
+<span class="fc" id="L39">            throw new IllegalArgumentException(&quot;Description cannot be null or empty&quot;);</span>
+        }
+<span class="fc bfc" id="L41" title="All 2 branches covered.">        if (value &lt; 0) {</span>
+<span class="fc" id="L42">            throw new IllegalArgumentException(&quot;Value cannot be negative.&quot;);</span>
+        }
+<span class="fc bfc" id="L44" title="All 2 branches covered.">        if (quantity &lt;= 0) {</span>
+<span class="fc" id="L45">            throw new IllegalArgumentException(&quot;Quantity cannot be negative.&quot;);</span>
+        }
+<span class="fc bfc" id="L47" title="All 2 branches covered.">        if (volume &lt;= 0  ) {</span>
+<span class="fc" id="L48">            throw new IllegalArgumentException(&quot;Volume cannot be negative.&quot;);</span>
+        }
+<span class="fc bfc" id="L50" title="All 2 branches covered.">        if (volume &gt; 63) {</span>
+<span class="fc" id="L51">            throw new IllegalArgumentException(&quot;Volume greater than 63 m^3.&quot;);</span>
+        }
+<span class="fc bfc" id="L53" title="All 2 branches covered.">        if (weight &lt;= 0) {</span>
+<span class="fc" id="L54">            throw new IllegalArgumentException(&quot;Weight cannot be negative or 0.&quot;);</span>
+        }
+
+<span class="fc" id="L57">        this.id = id;</span>
+<span class="fc" id="L58">        this.name = name;</span>
+<span class="fc" id="L59">        this.description = description;</span>
+<span class="fc" id="L60">        this.value = value;</span>
+<span class="fc" id="L61">        this.quantity = quantity;</span>
+<span class="fc" id="L62">        this.volume = volume;</span>
+<span class="fc" id="L63">        this.weight = weight;</span>
+<span class="fc" id="L64">    }</span>
+
+    /**
+     * Returns the id of the product.
+     *
+     * @return the id of the product.
+     */
+    @Override
+    public int getId() {
+<span class="fc" id="L73">        return this.id;</span>
+    }
+
+    /**
+     * Returns the name of the product.
+     *
+     * @return the name of the product.
+     */
+    @Override
+    public String getName() {
+<span class="nc" id="L83">        return this.name;</span>
+    }
+
+    /**
+     * Returns the description of the product.
+     *
+     * @return the description of the product.
+     */
+    @Override
+    public String getDescription() {
+<span class="nc" id="L93">        return this.description;</span>
+    }
+
+    /**
+     * Returns the value of the product.
+     *
+     * @return the value of the product.
+     */
+    @Override
+    public double getValue() {
+<span class="fc" id="L103">        return this.value;</span>
+    }
+
+    /**
+     * Returns the quantity of the product.
+     *
+     * @return the quantity of the product.
+     */
+    @Override
+    public int getQuantity() {
+<span class="fc" id="L113">        return this.quantity;</span>
+    }
+
+    /**
+     * Returns the volume of the product.
+     *
+     * @return the volume of the product.
+     */
+    @Override
+    public double getVolume() {
+<span class="fc" id="L123">        return this.volume;</span>
+    }
+
+    /**
+     * Returns the weight of the product.
+     *
+     * @return the weight of the product.
+     */
+    @Override
+    public double getWeight() {
+<span class="fc" id="L133">        return this.weight;</span>
+    }
+
+    /**
+     * Returns the string representation of the product.
+     *
+     * @return the string representation of the product.
+     */
+    @Override
+    public String print() {
+<span class="nc" id="L143">        StringBuilder sb = new StringBuilder(&quot;Product{&quot;);</span>
+<span class="nc" id="L144">        sb.append(&quot;id: &quot;).append(this.id);</span>
+<span class="nc" id="L145">        sb.append(&quot;, name: &quot;).append(this.name);</span>
+<span class="nc" id="L146">        sb.append(&quot;, description: &quot;).append(this.description);</span>
+<span class="nc" id="L147">        sb.append(&quot;, value: &quot;).append(this.value);</span>
+<span class="nc" id="L148">        sb.append(&quot;, quantity: &quot;).append(this.quantity);</span>
+<span class="nc" id="L149">        sb.append(&quot;, volume: &quot;).append(this.volume);</span>
+<span class="nc" id="L150">        sb.append(&quot;, weight: &quot;).append(this.weight);</span>
+<span class="nc" id="L151">        return sb.append('}').toString();</span>
+    }
+
+    /**
+     *
+     * @return the hash value of the product.
+     */
+    @Override
+    public String getHash() {
+<span class="fc" id="L160">        return HashUtils.getHash(this.id + this.name + this.description);</span>
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.6.202009150832</span></div></body></html>

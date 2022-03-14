@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="pt"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>DistrictDistance.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Projeto</a> &gt; <a href="index.source.html" class="el_package">ModuleCost</a> &gt; <span class="el_source">DistrictDistance.java</span></div><h1>DistrictDistance.java</h1><pre class="source lang-java linenums">package ModuleCost;
+
+
+import ModuleTransaction.Orgcom.hashing.HashUtils;
+import ModuleTransaction.Orgcom.hashing.UnHashableException;
+
+import java.util.ArrayList;
+import java.util.Iterator;
+
+/**
+ * This class stores the distance between a district and all others.
+ */
+public class DistrictDistance implements IDistrictDistance {
+
+    private final String name;
+
+<span class="fc" id="L17">    ArrayList&lt;IDistanceLine&gt; distances = new ArrayList&lt;&gt;();</span>
+
+    /**
+     * Creates a new DistrictDistance with the given name.
+     *
+     * @param name the name of the DistrictDistance.
+     * @throws IllegalArgumentException If any of the argument name is null or empty.
+     */
+<span class="fc" id="L25">    public DistrictDistance(String name) {</span>
+<span class="pc bpc" id="L26" title="1 of 4 branches missed.">        if (name == null || name.isEmpty()) {</span>
+<span class="fc" id="L27">            throw new IllegalArgumentException(&quot;Name cannot be null or empty&quot;);</span>
+        }
+
+<span class="fc" id="L30">        this.name = name;</span>
+<span class="fc" id="L31">    }</span>
+
+    /**
+     * Returns the name of the DistrictDistance.
+     *
+     * @return the name of the DistrictDistance.
+     */
+    @Override
+    public String getName() {
+<span class="fc" id="L40">        return this.name;</span>
+    }
+
+    /**
+     * Return the {@link IDistanceLine distance} in the DistrictDistance that have the same hash.
+     *
+     * @param distance the {@link IDistanceLine distance} to be checked.
+     * @return the {@link IDistanceLine distance} in the DistrictDistance that have the same hash, null if not found.
+     * @throws UnHashableException if the distance are not hashable.
+     */
+    @Override
+    public IDistanceLine getDistance(IDistanceLine distance) {
+<span class="fc bfc" id="L52" title="All 2 branches covered.">        if (distance == null) {</span>
+<span class="fc" id="L53">            throw new IllegalArgumentException(&quot;Distance cannot be null.&quot;);</span>
+        }
+
+<span class="fc bfc" id="L56" title="All 2 branches covered.">        for (IDistanceLine distanceTemp : this.distances) {</span>
+<span class="fc bfc" id="L57" title="All 2 branches covered.">            if (distance.getHash().equals(distanceTemp.getHash())) {</span>
+<span class="fc" id="L58">                return distance;</span>
+            }
+<span class="fc" id="L60">        }</span>
+
+<span class="fc" id="L62">        return null;</span>
+    }
+
+    /**
+     * Adds a distance to the DistrictDistance.
+     *
+     * @param distance the distance to add.
+     * @return true if the distance was added correctly or false is it was not added.
+     * @throws IllegalArgumentException if the distance parameter is null.
+     */
+    @Override
+    public boolean addDistance(IDistanceLine distance) {
+<span class="fc bfc" id="L74" title="All 2 branches covered.">        if (distance == null) {</span>
+<span class="fc" id="L75">            throw new IllegalArgumentException(&quot;Distance cannot be null.&quot;);</span>
+        }
+
+<span class="fc bfc" id="L78" title="All 2 branches covered.">        if (this.getDistance(distance) != null) {</span>
+<span class="fc" id="L79">            return false;</span>
+        }
+
+<span class="fc" id="L82">        this.distances.add(distance);</span>
+
+<span class="fc" id="L84">        return true;</span>
+    }
+
+    /**
+     * Returns the string representation of the DistrictDistance.
+     *
+     * @return the string representation of the DistrictDistance.
+     */
+    public String print() {
+<span class="nc" id="L93">        StringBuilder sb = new StringBuilder();</span>
+<span class="nc" id="L94">        sb.append(&quot;Districts{&quot;);</span>
+<span class="nc" id="L95">        sb.append(&quot;Name: &quot;).append(this.name);</span>
+<span class="nc" id="L96">        sb.append(&quot; ,Distances: &quot;).append(this.name);</span>
+<span class="nc bnc" id="L97" title="All 2 branches missed.">        for (int print = 0; print &lt; this.distances.size(); print++) {</span>
+<span class="nc" id="L98">            sb.append(&quot;, &quot;).append(distances.get(print).print());</span>
+        }
+<span class="nc" id="L100">        sb.append(&quot;}&quot;);</span>
+<span class="nc" id="L101">        return sb.toString();</span>
+    }
+
+    /**
+     * Returns the array of distances of the DistrictDistance.
+     *
+     * @return the array of distances of the DistrictDistance.
+     */
+    @Override
+    public ArrayList&lt;IDistanceLine&gt; getDistances() {
+<span class="fc" id="L111">        return this.distances;</span>
+    }
+
+    /**
+     * @return the hash value of the DistrictDistance.
+     */
+    @Override
+    public String getHash() {
+<span class="fc" id="L119">        return HashUtils.getHash(this.name);</span>
+    }
+
+    /**
+     * Returns the iterator value of the distances array of the DistrictDistance.
+     *
+     * @return the iterator value of the distances array of the DistrictDistance.
+     */
+    @Override
+    public Iterator&lt;IDistanceLine&gt; iterator() {
+<span class="nc" id="L129">        return this.distances.iterator();</span>
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.6.202009150832</span></div></body></html>

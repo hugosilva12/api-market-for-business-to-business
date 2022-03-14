@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="pt"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>DistanceLine.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Projeto</a> &gt; <a href="index.source.html" class="el_package">ModuleCost</a> &gt; <span class="el_source">DistanceLine.java</span></div><h1>DistanceLine.java</h1><pre class="source lang-java linenums">package ModuleCost;
+
+import ModuleTransaction.Orgcom.hashing.HashUtils;
+
+/**
+ * This class represents a district and its distance from another
+ */
+public class DistanceLine implements IDistanceLine {
+
+    private final String nameDistrict;
+    private final int distanceValue;
+
+    /**
+     * Creates a new Distance with the given id and distanceValue;
+     *
+     * @param id            the id of the distance
+     * @param distanceValue the distanceValue of the distance
+     * @throws IllegalArgumentException If any of the arguments are invalid (distance id is null or empty, distanceValue is less than 0).
+     */
+<span class="fc" id="L20">    public DistanceLine(String id, int distanceValue) {</span>
+<span class="pc bpc" id="L21" title="1 of 4 branches missed.">        if (id == null || id.isEmpty()) {</span>
+<span class="fc" id="L22">            throw new IllegalArgumentException(&quot;Id cannot be null or empty&quot;);</span>
+        }
+<span class="fc bfc" id="L24" title="All 2 branches covered.">        if (distanceValue &lt; 0) {</span>
+<span class="fc" id="L25">            throw new IllegalArgumentException(&quot;distance cannot be negative.&quot;);</span>
+        }
+
+<span class="fc" id="L28">        this.nameDistrict = id;</span>
+<span class="fc" id="L29">        this.distanceValue = distanceValue;</span>
+<span class="fc" id="L30">    }</span>
+
+    /**
+     * Returns the id of the distance.
+     *
+     * @return the id of the distance.
+     */
+    @Override
+    public String getId() {
+<span class="fc" id="L39">        return this.nameDistrict;</span>
+    }
+
+    /**
+     * Returns the distanceValue of the distance.
+     *
+     * @return the distanceValue of the distance.
+     */
+    @Override
+    public int getDistanceValue() {
+<span class="fc" id="L49">        return distanceValue;</span>
+    }
+
+    /**
+     * Returns the string representation of the distance.
+     *
+     * @return the string representation of the distance.
+     */
+    @Override
+    public String print() {
+<span class="nc" id="L59">        StringBuilder sb = new StringBuilder(&quot;Distance{&quot;);</span>
+<span class="nc" id="L60">        sb.append(&quot;id: &quot;).append(this.nameDistrict);</span>
+<span class="nc" id="L61">        sb.append(&quot;, distance value (KM): &quot;).append(this.distanceValue);</span>
+<span class="nc" id="L62">        return sb.append('}').toString();</span>
+    }
+
+    /**
+     * @return the hash value of the distance.
+     */
+    @Override
+    public String getHash() {
+<span class="fc" id="L70">        return HashUtils.getHash(this.nameDistrict + this.distanceValue);</span>
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.6.202009150832</span></div></body></html>

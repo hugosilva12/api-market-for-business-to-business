@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="pt"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Main.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Projeto</a> &gt; <a href="index.source.html" class="el_package">default</a> &gt; <span class="el_source">Main.java</span></div><h1>Main.java</h1><pre class="source lang-java linenums">
+import ApiUse.Orders;
+import JsonOperations.ImportOrders;
+import JsonOperations.MethodsJsonExporter;
+import TestsModuleExpedition.ExpeditionMethods;
+import org.json.simple.JSONObject;
+
+import java.util.Scanner;
+
+<span class="nc" id="L10">public class Main {</span>
+    private static void menu() { // menu principal
+<span class="nc" id="L12">        final String pathFile = &quot;filesJson/capacityTruck.json&quot;;</span>
+<span class="nc" id="L13">        MethodsJsonExporter methodsJsonExporter = new MethodsJsonExporter();</span>
+<span class="nc" id="L14">        Orders basicOrder = null;</span>
+<span class="nc" id="L15">        ImportOrders importOrders = new ImportOrders();</span>
+<span class="nc" id="L16">        Scanner menu = new Scanner(System.in);</span>
+<span class="nc" id="L17">        int opcao = 0, index = 0;</span>
+        do {
+<span class="nc" id="L19">            System.out.println(&quot;\n\n### API para otimizar atividade da  Market for Business to Business&quot;);</span>
+
+<span class="nc" id="L21">            System.out.println(&quot;    1 - Importar Encomendas (filesJson/OrdersFile.json) |&quot;);</span>
+<span class="nc" id="L22">            System.out.println(&quot;    2 - Visualizar Encomendas&quot;);</span>
+<span class="nc" id="L23">            System.out.println(&quot;    3 - Registar Encomendas&quot;);</span>
+<span class="nc" id="L24">            System.out.println(&quot;    4 - Obter Custo de envio de uma encomenda &quot;);</span>
+<span class="nc" id="L25">            System.out.println(&quot;    5 - Agrupar encomendas em camiÃµes para exportaÃ§Ã£o&quot;);</span>
+<span class="nc" id="L26">            System.out.println(&quot;    6 - MÃ©tricas Estatisticas&quot;);</span>
+<span class="nc" id="L27">            System.out.println(&quot;    7 - Exportar RelatÃ³rio Json!&quot;);</span>
+<span class="nc" id="L28">            System.out.println(&quot;    8 - Alterar capacidade dos camiÃµes&quot;);</span>
+<span class="nc" id="L29">            System.out.println(&quot;    0 - Sair&quot;);</span>
+<span class="nc" id="L30">            System.out.println(&quot;    ##############&quot;);</span>
+<span class="nc bnc" id="L31" title="All 2 branches missed.">            if (basicOrder != null) {</span>
+<span class="nc" id="L32">                System.out.println(&quot;    - NÃºmero de encomendas em memÃ³ria: &quot; + basicOrder.getNumberOrder() + &quot; ||NÃºmero de encomendas Registadas:&quot;);</span>
+            }
+<span class="nc" id="L34">            System.out.println(&quot;     Escolha opcÃ£o: &quot;);</span>
+<span class="nc" id="L35">            opcao = menu.nextInt();</span>
+<span class="nc bnc" id="L36" title="All 10 branches missed.">            switch (opcao) {</span>
+                case 1:
+<span class="nc" id="L38">                    basicOrder = (Orders) importOrders.importOrders(&quot;filesJson/OrdersFile.json&quot;);</span>
+<span class="nc" id="L39">                    break;</span>
+                case 2:
+<span class="nc bnc" id="L41" title="All 2 branches missed.">                    if (basicOrder != null) {</span>
+<span class="nc" id="L42">                        System.out.println(basicOrder.print());</span>
+                    }
+                    break;
+                case 3:
+<span class="nc bnc" id="L46" title="All 2 branches missed.">                    if (basicOrder != null) {</span>
+<span class="nc" id="L47">                        System.out.println(basicOrder.registerOrdersInLedger() + &quot; transaÃ§Ãµes  registadas!&quot;);</span>
+                    }
+                    break;
+                case 4:
+<span class="nc bnc" id="L51" title="All 2 branches missed.">                    if (basicOrder != null) {</span>
+<span class="nc" id="L52">                        System.out.println(&quot;Selecione o index da encomendas [0-&quot; + (basicOrder.getNumberOrder() - 1) + &quot;]&quot;);</span>
+<span class="nc" id="L53">                        index = menu.nextInt();</span>
+<span class="nc" id="L54">                        System.out.println(&quot;Custo de envio da encomenda&quot; + basicOrder.getOrderIndex(index).shippingCostCalculation());</span>
+                    }
+
+                case 5:
+<span class="nc" id="L58">                    ExpeditionMethods expeditionMethods = new ExpeditionMethods();</span>
+<span class="nc" id="L59">                    System.out.println(expeditionMethods.groupOrdersByTrucks(basicOrder.getBasicOrders()));</span>
+<span class="nc" id="L60">                    break;</span>
+                case 6:
+<span class="nc" id="L62">                    System.out.println(&quot;NÃºmero mÃ©dio de produtos por transaÃ§Ã£o: &quot; + basicOrder.averageNumberProductsTransaction());</span>
+<span class="nc" id="L63">                    System.out.println(&quot;Valor mÃ©dio das transaÃ§Ãµes: &quot; + basicOrder.averageValueTransactions());</span>
+<span class="nc" id="L64">                    System.out.println(&quot;MÃ©dia de compras e vendas por distrito &quot; + basicOrder.averageValueSalesPurchasesDistrict());</span>
+<span class="nc" id="L65">                    System.out.println(&quot;Desvio PadrÃ£o mÃ©dia produtos: &quot; + basicOrder.standardDeviationNumberProductTransactions());</span>
+<span class="nc" id="L66">                    System.out.println(&quot;Desvio PadrÃ£o mÃ©dia  transaÃ§Ãµes: &quot; + basicOrder.standardDeviationTransactions());</span>
+<span class="nc" id="L67">                    System.out.println(&quot;NÃºmero de encomendas recebidas / enviadas:  &quot; + basicOrder.numberOrderSentReceivedByDistrict());</span>
+<span class="nc" id="L68">                    break;</span>
+                case 7:
+<span class="nc" id="L70">                    methodsJsonExporter.exportStatistics(&quot;filesJson/Statistics.json&quot;, basicOrder.averageValueSalesPurchasesDistrict(), basicOrder.averageValueTransactions(), basicOrder.averageNumberProductsTransaction(), basicOrder.numberOrderSentReceivedByDistrict(), basicOrder.standardDeviationTransactions(), basicOrder.standardDeviationNumberProductTransactions());</span>
+<span class="nc" id="L71">                    ExpeditionMethods expeditionMethods1 = new ExpeditionMethods();</span>
+<span class="nc" id="L72">                    expeditionMethods1.groupOrdersByTrucks(basicOrder.getBasicOrders());</span>
+<span class="nc" id="L73">                    expeditionMethods1.exportGroupOrdersForFileJson();</span>
+<span class="nc" id="L74">                    break;</span>
+                case 8:
+<span class="nc" id="L76">                    System.out.println(&quot; Escolha nova capacidade: &quot;);</span>
+<span class="nc" id="L77">                    Double capacity = menu.nextDouble();</span>
+<span class="nc" id="L78">                    JSONObject jsonObject = new JSONObject();</span>
+<span class="nc" id="L79">                    jsonObject.put(&quot;capacity&quot;, capacity);</span>
+<span class="nc" id="L80">                    methodsJsonExporter.writeToFile(pathFile, jsonObject);</span>
+<span class="nc" id="L81">                    break;</span>
+                case 0:
+<span class="nc" id="L83">                    break;</span>
+                default:
+<span class="nc" id="L85">                    System.out.println(&quot;OpÃ§Ã£o InvÃ¡lida!&quot;);</span>
+                    break;
+            }
+
+<span class="nc bnc" id="L89" title="All 2 branches missed.">        } while (opcao != 0);</span>
+<span class="nc" id="L90">    }</span>
+
+    public static void main(String[] args) {
+<span class="nc" id="L93">        menu();</span>
+<span class="nc" id="L94">    }</span>
+
+}
+
+
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.6.202009150832</span></div></body></html>

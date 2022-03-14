@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="TestsModuleExpedition.TestProductsInsideTruck" tests="7" skipped="0" failures="0" errors="0" timestamp="2022-01-20T22:56:40" hostname="DESKTOP-HSBC8M0" time="0.007">
+  <properties/>
+  <testcase name="testProductsInsideTruckBVA01()" classname="TestsModuleExpedition.TestProductsInsideTruck" time="0.001"/>
+  <testcase name="testProductsInsideTruckBVA02()" classname="TestsModuleExpedition.TestProductsInsideTruck" time="0.001"/>
+  <testcase name="testProductsInsideTruckBVA03()" classname="TestsModuleExpedition.TestProductsInsideTruck" time="0.0"/>
+  <testcase name="testProductsInsideTruckBVA04()" classname="TestsModuleExpedition.TestProductsInsideTruck" time="0.001"/>
+  <testcase name="testProductsInsideTruckBVA05()" classname="TestsModuleExpedition.TestProductsInsideTruck" time="0.0"/>
+  <testcase name="testProductsInsideTruckBVA06()" classname="TestsModuleExpedition.TestProductsInsideTruck" time="0.0"/>
+  <testcase name="testProductsInsideTruckECP01()" classname="TestsModuleExpedition.TestProductsInsideTruck" time="0.0"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

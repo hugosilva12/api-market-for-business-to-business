@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="TestsImportTablekms.TestDistanceTable" tests="10" skipped="0" failures="0" errors="0" timestamp="2022-01-20T22:56:39" hostname="DESKTOP-HSBC8M0" time="0.028">
+  <properties/>
+  <testcase name="testGetDistrictDistanceBVA01()" classname="TestsImportTablekms.TestDistanceTable" time="0.002"/>
+  <testcase name="testGetDistrictDistanceECP01()" classname="TestsImportTablekms.TestDistanceTable" time="0.0"/>
+  <testcase name="testGetDistrictDistanceECP02()" classname="TestsImportTablekms.TestDistanceTable" time="0.001"/>
+  <testcase name="testAddDistrictDistanceBVA01()" classname="TestsImportTablekms.TestDistanceTable" time="0.001"/>
+  <testcase name="testAddDistrictDistanceECP01()" classname="TestsImportTablekms.TestDistanceTable" time="0.001"/>
+  <testcase name="testAddDistrictDistanceECP02()" classname="TestsImportTablekms.TestDistanceTable" time="0.001"/>
+  <testcase name="testGetDistanceValueFromShippingBVA01()" classname="TestsImportTablekms.TestDistanceTable" time="0.001"/>
+  <testcase name="testGetDistanceValueFromShippingBVA02()" classname="TestsImportTablekms.TestDistanceTable" time="0.001"/>
+  <testcase name="testGetDistanceValueFromShippingECP01()" classname="TestsImportTablekms.TestDistanceTable" time="0.011"/>
+  <testcase name="testGetDistanceValueFromShippingECP02()" classname="TestsImportTablekms.TestDistanceTable" time="0.004"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

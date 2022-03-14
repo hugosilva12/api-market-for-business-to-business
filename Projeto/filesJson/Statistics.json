@@ -1,0 +1,44 @@
+{
+  "Statistics": [
+    {
+      "NumberOrderSendReceive": [
+        {
+          "Recebidas": 2,
+          "District": "Lisboa",
+          "Enviadas": 0
+        },
+        {
+          "Recebidas": 0,
+          "District": "Porto",
+          "Enviadas": 2
+        }
+      ]
+    },
+    {
+      "ValueSalesPurchasesByDistrict": [
+        {
+          "Venda": 0.0,
+          "Compra": 115.97,
+          "District": "Lisboa"
+        },
+        {
+          "Venda": 115.97,
+          "Compra": 0.0,
+          "District": "Porto"
+        }
+      ]
+    },
+    {
+      "averageNumberProductsTransaction": 13.5
+    },
+    {
+      "averageValueTransactions": 115.97
+    },
+    {
+      "StandardDeviationNumberProductTransactions": 11.5
+    },
+    {
+      "StandardDeviationTransactions": 98.28
+    }
+  ]
+}

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="TestsModuleExpedition.TestTruck" tests="19" skipped="0" failures="0" errors="0" timestamp="2022-01-20T22:56:40" hostname="DESKTOP-HSBC8M0" time="0.091">
+  <properties/>
+  <testcase name="TestAddAllOrderInTruckBVA01()" classname="TestsModuleExpedition.TestTruck" time="0.002"/>
+  <testcase name="testAddProductInTruckBVA01()" classname="TestsModuleExpedition.TestTruck" time="0.001"/>
+  <testcase name="testAddProductInTruckBVA02()" classname="TestsModuleExpedition.TestTruck" time="0.01"/>
+  <testcase name="testAddProductInTruckBVA03()" classname="TestsModuleExpedition.TestTruck" time="0.009"/>
+  <testcase name="testAddProductInTruckBVA04()" classname="TestsModuleExpedition.TestTruck" time="0.008"/>
+  <testcase name="testAddProductInTruckBVA05()" classname="TestsModuleExpedition.TestTruck" time="0.009"/>
+  <testcase name="testAddProductInTruckECP01()" classname="TestsModuleExpedition.TestTruck" time="0.009"/>
+  <testcase name="testAddAllOrderInTruckBVA02()" classname="TestsModuleExpedition.TestTruck" time="0.013"/>
+  <testcase name="testAddAllOrderInTruckBVA03()" classname="TestsModuleExpedition.TestTruck" time="0.002"/>
+  <testcase name="testAddAllOrderInTruckProductInTruckECP01()" classname="TestsModuleExpedition.TestTruck" time="0.008"/>
+  <testcase name="testGetProductContainerTruckBVA01()" classname="TestsModuleExpedition.TestTruck" time="0.001"/>
+  <testcase name="testGetProductContainerTruckECP01()" classname="TestsModuleExpedition.TestTruck" time="0.001"/>
+  <testcase name="testGetProductContainerTruckECP02()" classname="TestsModuleExpedition.TestTruck" time="0.003"/>
+  <testcase name="testTruckBVA01()" classname="TestsModuleExpedition.TestTruck" time="0.002"/>
+  <testcase name="testTruckBVA02()" classname="TestsModuleExpedition.TestTruck" time="0.002"/>
+  <testcase name="testTruckECP01()" classname="TestsModuleExpedition.TestTruck" time="0.002"/>
+  <testcase name="testGetProductListProductsInsideTruckBVA01()" classname="TestsModuleExpedition.TestTruck" time="0.002"/>
+  <testcase name="testGetProductListProductsInsideTruckBVA02()" classname="TestsModuleExpedition.TestTruck" time="0.001"/>
+  <testcase name="testGetProductListProductsInsideTruckECP01()" classname="TestsModuleExpedition.TestTruck" time="0.001"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

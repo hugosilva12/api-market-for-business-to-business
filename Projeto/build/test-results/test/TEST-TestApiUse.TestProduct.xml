@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="TestApiUse.TestProduct" tests="11" skipped="0" failures="0" errors="0" timestamp="2022-01-20T22:56:39" hostname="DESKTOP-HSBC8M0" time="0.02">
+  <properties/>
+  <testcase name="testBasicProductBVA010()" classname="TestApiUse.TestProduct" time="0.001"/>
+  <testcase name="testBasicProductBVA01()" classname="TestApiUse.TestProduct" time="0.001"/>
+  <testcase name="testBasicProductBVA02()" classname="TestApiUse.TestProduct" time="0.001"/>
+  <testcase name="testBasicProductBVA03()" classname="TestApiUse.TestProduct" time="0.001"/>
+  <testcase name="testBasicProductBVA04()" classname="TestApiUse.TestProduct" time="0.003"/>
+  <testcase name="testBasicProductBVA05()" classname="TestApiUse.TestProduct" time="0.001"/>
+  <testcase name="testBasicProductBVA06()" classname="TestApiUse.TestProduct" time="0.001"/>
+  <testcase name="testBasicProductBVA07()" classname="TestApiUse.TestProduct" time="0.001"/>
+  <testcase name="testBasicProductBVA08()" classname="TestApiUse.TestProduct" time="0.001"/>
+  <testcase name="testBasicProductBVA09()" classname="TestApiUse.TestProduct" time="0.002"/>
+  <testcase name="testBasicProductECP01()" classname="TestApiUse.TestProduct" time="0.001"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

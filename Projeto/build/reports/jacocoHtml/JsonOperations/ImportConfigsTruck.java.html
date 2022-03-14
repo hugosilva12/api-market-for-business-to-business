@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="pt"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>ImportConfigsTruck.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Projeto</a> &gt; <a href="index.source.html" class="el_package">JsonOperations</a> &gt; <span class="el_source">ImportConfigsTruck.java</span></div><h1>ImportConfigsTruck.java</h1><pre class="source lang-java linenums">package JsonOperations;
+
+import org.json.simple.JSONObject;
+import org.json.simple.parser.JSONParser;
+import org.json.simple.parser.ParseException;
+
+import java.io.File;
+import java.io.FileReader;
+import java.io.IOException;
+
+/**
+ * This class imports truck capacity
+ */
+public class ImportConfigsTruck {
+<span class="fc" id="L15">    public ImportConfigsTruck() {</span>
+
+<span class="fc" id="L17">    }</span>
+
+    /**
+     * This method import truck capacity
+     *
+     * @param path path to file
+     * @return capacity present in the file, 63 if the file is not found
+     */
+    public static double importConfigCapacity(String path) {
+<span class="pc bpc" id="L26" title="1 of 4 branches missed.">        if (path == null || path.isEmpty()) {</span>
+<span class="fc" id="L27">            throw new IllegalArgumentException(&quot;Path should not be null or empty&quot;);</span>
+        }
+<span class="fc" id="L29">        JSONParser jsonParser = new JSONParser();</span>
+
+<span class="fc" id="L31">        File file = new File(path);</span>
+<span class="fc" id="L32">        boolean exists = file.exists();</span>
+
+<span class="fc bfc" id="L34" title="All 2 branches covered.">        if (exists) {</span>
+
+<span class="fc" id="L36">            JSONObject obj = null;</span>
+            try {
+<span class="fc" id="L38">                obj = (JSONObject) jsonParser.parse(new FileReader(file.getPath()));</span>
+<span class="nc" id="L39">            } catch (IOException e) {</span>
+<span class="nc" id="L40">                e.printStackTrace();</span>
+<span class="nc" id="L41">            } catch (ParseException e) {</span>
+<span class="nc" id="L42">                e.printStackTrace();</span>
+<span class="pc" id="L43">            }</span>
+
+<span class="fc" id="L45">            double volume = 0;</span>
+<span class="fc" id="L46">            String volumeTemp = obj.get(&quot;capacity&quot;).toString();</span>
+<span class="fc" id="L47">            volume = Double.valueOf(volumeTemp);</span>
+<span class="fc" id="L48">            return volume;</span>
+        }
+
+<span class="fc" id="L51">        return 63.0;</span>
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.6.202009150832</span></div></body></html>

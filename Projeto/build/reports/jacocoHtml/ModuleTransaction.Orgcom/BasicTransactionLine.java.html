@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="pt"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>BasicTransactionLine.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Projeto</a> &gt; <a href="index.source.html" class="el_package">ModuleTransaction.Orgcom</a> &gt; <span class="el_source">BasicTransactionLine.java</span></div><h1>BasicTransactionLine.java</h1><pre class="source lang-java linenums">package ModuleTransaction.Orgcom;
+
+
+import ModuleTransaction.Orgcom.hashing.HashUtils;
+import ModuleTransaction.Orgcom.hashing.UnHashableException;
+
+
+/**
+ * The BasicTransactionLine class provides the functionality of a basic transaction line.
+ */
+public class BasicTransactionLine implements TransactionLine {
+
+    private final String itemDescription;
+    private final int quantity;
+    private final double unitPrice;
+
+    /**
+     * Creates a new transaction line.
+     *
+     * @param itemDescription Item in the transaction line.
+     * @param quantity        Quantity of the item in transaction line.
+     * @param unitPrice       Unit Price of the item in the transaction line.
+     * @throws IllegalArgumentException If any of the arguments are invalid (item description is null or empty, quantity is less or equal than 0 and unitPrice is negative).
+     */
+<span class="fc" id="L25">    public BasicTransactionLine(String itemDescription, int quantity, double unitPrice) {</span>
+<span class="fc bfc" id="L26" title="All 4 branches covered.">        if (itemDescription == null || itemDescription.isEmpty()) {</span>
+<span class="fc" id="L27">            throw new IllegalArgumentException(&quot;Item cannot be null or empty.&quot;);</span>
+        }
+<span class="fc bfc" id="L29" title="All 2 branches covered.">        if (quantity &lt;= 0) {</span>
+<span class="fc" id="L30">            throw new IllegalArgumentException(&quot;Quantity cannot be negative.&quot;);</span>
+        }
+<span class="fc bfc" id="L32" title="All 2 branches covered.">        if (unitPrice &lt; 0) {</span>
+<span class="fc" id="L33">            throw new IllegalArgumentException(&quot;Unit price cannot be negative.&quot;);</span>
+        }
+
+<span class="fc" id="L36">        this.itemDescription = itemDescription;</span>
+<span class="fc" id="L37">        this.quantity = quantity;</span>
+<span class="fc" id="L38">        this.unitPrice = unitPrice;</span>
+<span class="fc" id="L39">    }</span>
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    public String getItemDescription() {
+<span class="nc" id="L46">        return this.itemDescription;</span>
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    public double getUnitPrice() {
+<span class="fc" id="L54">        return this.unitPrice;</span>
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    public int getQuantity() {
+<span class="fc" id="L62">        return this.quantity;</span>
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    public double getTotalPrice() {
+<span class="fc" id="L70">        return this.unitPrice * this.quantity;</span>
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    public String getHash() {
+<span class="fc" id="L78">        return HashUtils.getHash(this.itemDescription + this.quantity + this.unitPrice);</span>
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    public String toString() {
+<span class="nc" id="L86">        StringBuilder sb = new StringBuilder(&quot;TransactionLine{&quot;);</span>
+<span class="nc" id="L87">        sb.append(&quot;item=&quot;).append(this.itemDescription);</span>
+<span class="nc" id="L88">        sb.append(&quot;, quantity=&quot;).append(this.quantity);</span>
+<span class="nc" id="L89">        sb.append(&quot;, Unit price=&quot;).append(this.unitPrice);</span>
+        try {
+<span class="nc" id="L91">            sb.append(&quot;, hash=&quot;).append(this.getHash());</span>
+<span class="nc" id="L92">        } catch (UnHashableException e) {</span>
+<span class="nc" id="L93">            sb.append(&quot;, hash=&quot;).append(e.getMessage());</span>
+<span class="nc" id="L94">        }</span>
+<span class="nc" id="L95">        return sb.append('}').toString();</span>
+    }
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.6.202009150832</span></div></body></html>

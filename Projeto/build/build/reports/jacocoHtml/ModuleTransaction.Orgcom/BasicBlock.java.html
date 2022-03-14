@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="pt"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>BasicBlock.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Projeto</a> &gt; <a href="index.source.html" class="el_package">ModuleTransaction.Orgcom</a> &gt; <span class="el_source">BasicBlock.java</span></div><h1>BasicBlock.java</h1><pre class="source lang-java linenums">package ModuleTransaction.Orgcom;
+
+import ModuleTransaction.Orgcom.hashing.HashUtils;
+
+
+import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.Iterator;
+
+/**
+ * the BasicBlock class provides the functionality of a basic block in the system.
+ */
+public class BasicBlock implements Block {
+
+    private final ArrayList&lt;Transaction&gt; transactions;
+<span class="fc" id="L16">    private final LocalDate dateCreated = LocalDate.now();</span>
+    private final String previousHash;
+    private final String creationHash;
+
+<span class="fc" id="L20">    public BasicBlock(ArrayList&lt;Transaction&gt; transactions, String previousHash) {</span>
+<span class="fc" id="L21">        this.transactions = transactions;</span>
+<span class="fc" id="L22">        this.previousHash = previousHash;</span>
+<span class="fc" id="L23">        this.creationHash = this.getHash();</span>
+<span class="fc" id="L24">    }</span>
+
+    @Override
+    public String getPreviousHash() {
+<span class="fc" id="L28">        return this.previousHash;</span>
+    }
+
+    @Override
+    public int getNumberOfTransactions() {
+<span class="fc" id="L33">        return this.transactions.size();</span>
+    }
+
+    @Override
+    public Iterator&lt;Transaction&gt; getTransactions() {
+<span class="fc" id="L38">        return this.transactions.iterator();</span>
+    }
+
+    @Override
+    public void print() {
+<span class="nc" id="L43">        System.out.println(&quot;\nBLOCK: &quot; + HashUtils.getSmallHash(this.getCreationHash()) + &quot; {Date:&quot; + this.getDate() + &quot;}&quot;);</span>
+<span class="nc" id="L44">        System.out.println(&quot;Previous:&quot; + HashUtils.getSmallHash(this.getPreviousHash()));</span>
+<span class="nc bnc" id="L45" title="All 2 branches missed.">        System.out.println(&quot;Valid:&quot; + !this.wasTampered() + &quot; {Current Hash:&quot; + HashUtils.getSmallHash(this.getHash()) + &quot;}&quot;);</span>
+<span class="nc" id="L46">        System.out.println(&quot;Transactions:&quot;);</span>
+<span class="nc bnc" id="L47" title="All 2 branches missed.">        for (Transaction transaction : this.transactions) {</span>
+<span class="nc" id="L48">            transaction.print();</span>
+<span class="nc" id="L49">        }</span>
+<span class="nc" id="L50">    }</span>
+
+    @Override
+    public LocalDate getDate() {
+<span class="nc" id="L54">        return this.dateCreated;</span>
+    }
+
+    @Override
+    public String getCreationHash() {
+<span class="nc" id="L59">        return this.creationHash;</span>
+    }
+
+    @Override
+    public boolean wasTampered() {
+<span class="fc bfc" id="L64" title="All 2 branches covered.">        return !this.getHash().equals(this.creationHash);</span>
+    }
+
+    @Override
+    public String getHash() {
+<span class="fc" id="L69">        StringBuilder sb = new StringBuilder();</span>
+<span class="fc" id="L70">        sb.append(this.dateCreated);</span>
+<span class="fc" id="L71">        sb.append(this.previousHash);</span>
+<span class="fc bfc" id="L72" title="All 2 branches covered.">        for (Transaction transaction : this.transactions) {</span>
+<span class="fc" id="L73">            sb.append(transaction.getHash());</span>
+<span class="fc" id="L74">        }</span>
+<span class="fc" id="L75">        return HashUtils.getHash(sb.toString());</span>
+    }
+
+    @Override
+    public boolean equals(Object other) {
+<span class="nc bnc" id="L80" title="All 2 branches missed.">        if (this == other) {</span>
+<span class="nc" id="L81">            return true;</span>
+        }
+<span class="nc bnc" id="L83" title="All 4 branches missed.">        if (other == null || this.getClass() != other.getClass()) {</span>
+<span class="nc" id="L84">            return false;</span>
+        }
+
+<span class="nc" id="L87">        return this.getCreationHash().equals(((BasicBlock) other).getCreationHash());</span>
+    }
+
+    /**
+     * Returns a string representation of the entity.
+     *
+     * @return a string representation of the entity.
+     */
+    @Override
+    public String toString() {
+<span class="nc" id="L97">        return &quot;\nBlock{&quot; +</span>
+                &quot;transactions=&quot; + this.transactions +
+                &quot;, dateCreated=&quot; + this.dateCreated +
+                &quot;, previousHash='&quot; + this.previousHash + '\'' +
+                &quot;, hash='&quot; + this.creationHash + '\'' +
+                '}';
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.6.202009150832</span></div></body></html>
