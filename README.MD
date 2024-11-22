@@ -9,4 +9,3 @@
 ## SCMP
 - Same action as the User Story: "View the project wiki" to access the full documentation and project structure on the wiki.
 
-"# API-Market-for-Business-to-Business-"
