@@ -1,14 +1,12 @@
-# API para otimizar atividade da  Market for Business to Business 
+# API to Optimize Market for Business to Business Activity
 
-## Link Repositorio
-https://github.com/hugosilva12/API-Market-for-Business-to-Business-/edit/master/README.MD
-
+## Repository Link
+[API-Market-for-Business-to-Business](https://github.com/hugosilva12/API-Market-for-Business-to-Business-/edit/master/README.MD)
 
 ## User Stories
-Visualizar wiki do projeto
+- As a **user**, I want to view the project wiki to better understand the available features and how to use them.
+
 ## SCMP
-Visualizar wiki do projeto
-# Membros
-8180378-Hugo Silva
-8200306-Fábio Costa
-"# API-Market-for-Business-to-Business-" 
+- Same action as the User Story: "View the project wiki" to access the full documentation and project structure on the wiki.
+
+"# API-Market-for-Business-to-Business-"
